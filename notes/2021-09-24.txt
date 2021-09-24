@@ -2,8 +2,12 @@
 
 Raw data can be found at
 
-  https://github.com/invinst/chicago-police-data/tree/master/data
+    https://github.com/invinst/chicago-police-data/tree/master/data
 
 To unzip .gz files, run
 
 	gzip -d <filename>.gz
+
+Previous projects
+
+    https://github.com/Northwestern-Data-Sci-Seminar/Invisible-Institute-Chicago-Reporter-Collaboration-Public
