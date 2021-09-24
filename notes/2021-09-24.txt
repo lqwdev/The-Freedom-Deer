@@ -1,19 +1,15 @@
 2021-09-24
 
 Raw data can be found at
-
     https://github.com/invinst/chicago-police-data/tree/master/data
 
 To unzip .gz files, run
-
-	gzip -d <filename>.gz
+    gzip -d <filename>.gz
 
 Previous projects
-
     https://github.com/Northwestern-Data-Sci-Seminar/Invisible-Institute-Chicago-Reporter-Collaboration-Public
 
 Data website visualization
-
     https://data.cpdp.co/data/D6zQ5N/citizens-police-data-project
 
 
