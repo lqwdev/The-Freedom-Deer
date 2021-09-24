@@ -4,4 +4,6 @@ Raw data can be found at
 
   https://github.com/invinst/chicago-police-data/tree/master/data
 
+To unzip .gz files, run
 
+	gzip -d <filename>.gz
