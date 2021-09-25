@@ -21,11 +21,7 @@ To extract top level raw data, run
 make unzip
 ```
 
-After running the above command, the unzipped data will be found in the directiory
-
-```
-data/fully-unified-data
-```
+After running the above command, the unzipped data will be found in the directiory `data/fully-unified-data`
 
 To remove the data directory, run
 
