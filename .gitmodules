@@ -1,0 +1,3 @@
+[submodule "chicago-police-data"]
+	path = chicago-police-data
+	url = https://github.com/invinst/chicago-police-data.git
