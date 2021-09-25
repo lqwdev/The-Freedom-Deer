@@ -15,4 +15,20 @@ git clone https://github.com/lqwdev/ai339-project.git
 
 ### Data
 
+To extract top level raw data, run
 
+```bash
+make unzip
+```
+
+After running the above command, the unzipped data will be found in the directiory
+
+```
+data/fully-unified-data
+```
+
+To remove the data directory, run
+
+```bash
+make clean
+```
