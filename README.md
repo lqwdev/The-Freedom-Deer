@@ -21,9 +21,15 @@ To extract top level raw data, run
 make unzip
 ```
 
-After running the above command, the unzipped data will be found in the directiory `data/fully-unified-data`
+After running the above command, the unzipped data will be found in the directiory `data/fully-unified-data`. All the `.gz` files will be unzipped (Note that this depends on `gunzip`).
 
-To remove the data directory, run
+To see all files, run
+
+```bash
+tree data/
+```
+
+To remove the unzipped data directory, run
 
 ```bash
 make clean
