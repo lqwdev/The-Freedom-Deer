@@ -1,4 +1,4 @@
-\documentclass[10pt]{article}
+\documentclass[12pt]{article}
 \usepackage[document]{ragged2e}
 \usepackage{multicol}
 \usepackage[margin=1in]{geometry}
@@ -20,9 +20,117 @@
 {0pt}{0.5em}{0.5em}
 
 \title{Project Proposal}
-\author{Tianchang Li, Hualiang Qin, Qingwei Lan}
+\author{The Freedom Deer: Tianchang Li, Hualiang Qin, Qingwei Lan}
 
 \begin{document}
 \maketitle
+
+
+\section{Theme}
+
+Our main goal is to research the relationship between allegation category and ``repeaters" career prospect.
+
+Different misconduct might have different impacts on victims vary from its severity. For example, the use of force compared to verbal abuse might have a higher possibility of escalating to fighting incidents and even cause civilian casualties which is the least we want to see. However, how do different kinds of misconduct reflect on the career prospects of police officers? Are there any kinds of misconduct that are underrated? Also, supported by the ``few bad apple" theory \cite{badcops}, we want to focus mainly on the repeaters.
+
+
+To determine the prospect of a police officer career, we will study their promotions, awards and yearly salary raise percentage. We understand that the career prospect of a police officer is not only influenced by how many allegations he/she received but also the category of the allegations. To simplify the question and make the analysis more workable, rather than splitting police officers by the number of allegations, we will categorize police officers with 4+ allegations as ``repeaters". Among all categories, we focus on 4 specific categories (Use of Force, Illegal Search, Lockup procedures, Verbal Abuse) that have received the most social attention in recent years. We want to provide insights on whether any of these allegations are neglected in the investigation and what underlying social components impact the career prospect parallely under each category. The major question we are eager to probe is: Do officers who received certain types of allegations get less rewards or promotion than those who received other types of allegations?
+
+
+
+\section{Relational Analytics}
+
+\begin{itemize}
+
+\item What portion of police officers are repeaters (have 4+ allegations)?
+
+\item Which category of allegation (Use of Force, Illegal Search, Lockup procedures, Verbal Abuse) is most common among repeaters?
+
+\item What percentage of repeaters with 4 categories (Use of Force, Illegal Search, Lockup procedures, Verbal Abuse) of allegations get promoted each year?
+
+\item What percentage of repeaters with 4 categories (Use of Force, Illegal Search, Lockup procedures, Verbal Abuse) of allegations get awards each year?
+
+\end{itemize}
+
+
+
+\section{Data Visualization}
+
+\begin{itemize}
+
+\item The number of allegations that were sustained vs nonsustained over years.
+
+\item For the 4 categories of allegations that we focus on, what’s the impact on promotion/rank/salary from the number of allegations filed on each individual.
+
+\item For the 4 categories of allegations that we focus on, what’s the impact on promotion/rank/salary from the rank or length of career (representation of authority).
+
+\end{itemize}
+
+
+
+\section{Interactive Data Visualization}
+
+\begin{itemize}
+
+\item The ratio of nonsustained allegation vs sustained on the community region map, with the categories shown when hovering the mouse on top.
+
+\item The racial composition of the sustained and unsustained officers on two pie charts as well as the composition of whether they are in different race groups from the complainant, with the categories shown when hovering the mouse on top.
+
+\item The trend of the percentage of repeaters who get awards and promoted over years for the 4 categories we focus on. Users can view from one category or (awards or promoted).
+
+\end{itemize}
+
+
+
+
+\section{Graph Analytics}
+
+\begin{itemize}
+
+\item For each category (such as ``use of force"), determine whether there are clusters of police officers that operate as groups with offenses under the same category.
+
+\item For each of the categories, do the allegations happen in specific locations (with factors such as racial distribution, income distribution, etc...), or are they more spread out throughout the Chicago metropolitan area?
+
+\end{itemize}
+
+
+
+\section{Natural Language Processing}
+
+Most of the complaint information is lost during classification, leading to preprocessed data that is already biased. We would like to perform analysis on raw complaint data to determine
+
+\begin{itemize}
+
+\item Whether violent use of force (i.e. ``... punched ... on the nose ...") leads to a higher rate of the accused being sustained, and how does it affects the officer’s career prospect?
+
+\begin{itemize}
+
+\item Whether use of force is correctly categorized or not?
+
+\end{itemize}
+
+\item How racial aspects influence the rate of being sustained, and how it affects the officer’s career prospect?
+
+\item Does the usage of vulgar language or racial slurs by the accused officer (``fucking ...", ``nigger") affect the rate of being sustained?
+
+\begin{itemize}
+
+\item Do these complaints get neglected?
+
+\item Does the same officer get accused of repeated use of vulgar language or racial slurs?
+
+\item Categorize and count these complaints and plot them over time and see whether the problem is getting worse
+
+\end{itemize}
+
+\end{itemize}
+
+
+\begin{thebibliography}{9}
+
+\bibitem{badcops}
+Rob Arthur. 2015. How To Predict Bad Cops In Chicago. (December 2015). Retrieved September 27, 2021 from https://fivethirtyeight.com/features/how-to-predict-which-chicago-cops-will-commit-misconduct/
+
+\end{thebibliography}
+
 
 \end{document}
