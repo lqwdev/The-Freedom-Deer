@@ -1,2 +1,2 @@
-project-proposal: project-proposal.tex
+project-proposal.pdf: project-proposal.tex
 	pdflatex $^
