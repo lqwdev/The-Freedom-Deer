@@ -1,6 +1,5 @@
 SELECT
     ROUND(
-        /* cases where officer and victim are of different races */
         CAST(COUNT(*) AS DECIMAL(10,2)) / 
         /* total use of force cases */
         CAST((SELECT COUNT(*) FROM trr_trr) AS DECIMAL(10,2)),
