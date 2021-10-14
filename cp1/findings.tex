@@ -19,12 +19,130 @@
 \titlespacing*{\section}
 {0pt}{0.5em}{0.5em}
 
-\title{Checkpoint 1: SQL Analytics}
+\title{Checkpoint 1: SQL Analytics Findings}
 \author{The Freedom Deer: Tianchang Li, Hualiang Qin, Qingwei Lan}
 
 \begin{document}
 \maketitle
 
+The main goal of our research is to investigate the conditions under which police officers tend to use force on civilians. Specifically we believe that race and environmental conditions play a critical role in this, therefore in this report, we utilized SQL to analyze and answer some important questions.
+
+The questions are split into sections and each section contains multiple questions.
+
+Note that all \texttt{.sql} files can be run with \texttt{psql cpdb cpdb < filename.sql}.
+
+\section*{1. Information about Victims and Officers}
+
+We would like to first gather some information about the officers and victims in the use of force cases. The data in this section is taken from the \texttt{trr\_trr} and \texttt{data\_officer} datasets.
+
+\subsubsection*{1a. What is the racial distribution of the victims involved in cases of use of force?}
+
+SQL file: \texttt{1a.sql}
+
+Results:
+
+\begin{verbatim}
+          subject_race          | count
+--------------------------------+-------
+ Black                          | 49747
+ Hispanic                       |  9369
+ White                          |  6540
+ Asian/Pacific Islander         |   431
+ Native American/Alaskan Native |    54
+\end{verbatim}
+
+From the results, we can see the race distribution of the subjects involved in use of force cases. As we can see, black subjects are most common.
+
+
+\subsubsection*{1b. What is the racial distribution of police officers involved in these cases?}
+
+SQL file: \texttt{1b.sql}
+
+Results:
+
+\begin{verbatim}
+           officer_race         | count
+--------------------------------+-------
+ White                          | 38731
+ Hispanic                       | 15064
+ Black                          | 10599
+ Asian/Pacific                  |  2028
+ Native American/Alaskan Native |   310
+\end{verbatim}
+
+From the results, we can see the race distribution of police officers involved in use of force cases. At the top is white police officers.
+
+
+\subsubsection*{1c. What portion of the total use of force cases involves an officer that is of a different race than that of the victim (cross-race use of force)?}
+
+SQL file: \texttt{1c.sql}
+
+Results:
+
+\begin{verbatim}
+ cross_race_percentage
+-----------------------
+              0.732046
+\end{verbatim}
+
+Based on the results, we can see that cross-race use of force cases make up 73.2\% of total use of force cases.
+
+
+\subsubsection*{1d. What portion of the cases in use of force cases contained firearm usage.}
+
+SQL file: \texttt{1d.sql}
+
+Results:
+
+\begin{verbatim}
+ firearm_used_percentage
+-------------------------
+                  0.0153
+\end{verbatim}
+
+Based on the results, we can see that only 1.5\% use of force cases involved the usage of firearms.
+
+
+\subsubsection*{1e. What are the percentages of use of force cases grouped by officer race and subject race? (i.e. what is the percentage of white officers using force on black subjects)}
+
+SQL file: \texttt{1e.sql}
+
+Results:
+
+\begin{verbatim}
+ percentage |          officer_race          |          subject_race
+------------+--------------------------------+--------------------------------
+   0.416733 | White                          | Black
+   0.157269 | Hispanic                       | Black
+   0.141796 | Black                          | Black
+   0.083096 | White                          | Hispanic
+   0.065161 | White                          | White
+   0.043256 | Hispanic                       | Hispanic
+   0.020457 | Hispanic                       | White
+   0.019950 | Asian/Pacific Islander         | Black
+   0.008147 | White                          |
+   0.006923 | Black                          | White
+   0.006849 | Black                          | Hispanic
+   0.005536 | Asian/Pacific Islander         | Hispanic
+   0.004238 | White                          | Asian/Pacific Islander
+   0.003969 | Asian/Pacific Islander         | White
+   0.003357 | Native American/Alaskan Native | Black
+   0.002552 | Hispanic                       |
+   0.001805 | Black                          |
+   0.001044 | Hispanic                       | Asian/Pacific Islander
+   0.000731 | Black                          | Asian/Pacific Islander
+   0.000627 | Native American/Alaskan Native | Hispanic
+   0.000537 | White                          | Native American/Alaskan Native
+   0.000463 | Native American/Alaskan Native | White
+   0.000418 | Asian/Pacific Islander         | Asian/Pacific Islander
+   0.000358 | Asian/Pacific Islander         |
+   0.000194 | Hispanic                       | Native American/Alaskan Native
+   0.000179 | Native American/Alaskan Native |
+   0.000045 | Black                          | Native American/Alaskan Native
+   0.000030 | Asian/Pacific Islander         | Native American/Alaskan Native
+\end{verbatim}
+
+The results give us a high level overview of the racial distribution of both subjects and police officers in all the use of force cases. A cursive scan shows us that 41\% of all cases come from white police officers' use of force on black subjects. Further analysis shows that cases with black subjects make up 71.58\% of all use of force cases.
 
 
 \end{document}
