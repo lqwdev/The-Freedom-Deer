@@ -1,4 +1,4 @@
-\documentclass[12pt]{article}
+\documentclass[10pt]{article}
 \usepackage[document]{ragged2e}
 \usepackage{multicol}
 \usepackage[margin=1in]{geometry}
@@ -28,109 +28,133 @@
 
 \section{Theme}
 
-Our main goal is to research the relationship between allegation category and ``repeaters" career prospect.
+The theme of our research revolves around answering the following guiding questions:
+\begin{itemize}
+\setlength\itemsep{0em}
+\item What makes someone more risky towards experiencing the use of force?
+\item What are the typical scenarios in which police officers tend to use force?
+\end{itemize}
 
-Different misconduct might have different impacts on victims vary from its severity. For example, the use of force compared to verbal abuse might have a higher possibility of escalating to fighting incidents and even cause civilian casualties which is the least we want to see. However, how do different kinds of misconduct reflect on the career prospects of police officers? Are there any kinds of misconduct that are underrated? Also, supported by the ``few bad apple" theory \cite{badcops}, we want to focus mainly on the repeaters.
+Our main goal is to investigate the conditions under which police officers tend to use force on civilians. We believe that there are many reasons including the race of the subject, the environment under which the conflicts happened, the physical location in Chicago (neighborhood demographics), etc. We would like to explore how each of these conditions influences the police officer’s choice to use force and how they interact with each other to impact as a whole.
 
+Specifically, we revolve our research on the differentiated treatments civilians receive from the police officers by studying the characteristics of the cases involved in the complaint and tactical response report. For example, is a specific race more likely to become the victim of police officers’ use of force? Does the race of the police officer play a role in this as well? Whether cross-race interaction increases the likelihood of use of force.
 
-To determine the prospect of a police officer career, we will study their promotions, awards and yearly salary raise percentage. We understand that the career prospect of a police officer is not only influenced by how many allegations he/she received but also the category of the allegations. To simplify the question and make the analysis more workable, rather than splitting police officers by the number of allegations, we will categorize police officers with 4+ allegations as ``repeaters". Among all categories, we focus on 4 specific categories (Use of Force, Illegal Search, Lockup procedures, Verbal Abuse) that have received the most social attention in recent years. We want to provide insights on whether any of these allegations are neglected in the investigation and what underlying social components impact the career prospect parallely under each category. The major question we are eager to probe is: Do officers who received certain types of allegations get less rewards or promotion than those who received other types of allegations?
+Under each race, we will look into the environmental factors that could work together to influence the decisions of the force usage, including weather, physical location, time of the day. For example, whether the use of force occurs more often in the neighborhoods with a cluster of certain races and whether the reduced visibility of black people increases the incentive for force usage.
 
 
 
 \section{Relational Analytics}
 
-\begin{itemize}
+\begin{enumerate}
 
-\item What portion of police officers are repeaters (have 4+ allegations)?
+\item Information about victims and officers
 
-\item Which category of allegation (Use of Force, Illegal Search, Lockup procedures, Verbal Abuse) is most common among repeaters?
+    \begin{enumerate}
 
-\item What percentage of repeaters with 4 categories (Use of Force, Illegal Search, Lockup procedures, Verbal Abuse) of allegations get promoted each year?
+    \item What is the racial distribution of the victims involved in cases of use of force?
 
-\item What percentage of repeaters with 4 categories (Use of Force, Illegal Search, Lockup procedures, Verbal Abuse) of allegations get awards each year?
+    \item What is the racial distribution of police officers involved in these cases?
 
-\end{itemize}
+    \item What portion of the total use of force cases involves an officer that is of a different race than that of the victim (cross-race use of force)?
+
+    \item What portion of the cases in use of force cases contained firearm usage.
+
+    \item What are the percentages of use of force cases grouped by officer race and subject race? (i.e. what is the percentage of white officers using force on black subjects)
+
+    \end{enumerate}
+
+\item Environmental factors that may affect an officer’s decision to use force
+
+    \begin{enumerate}
+
+    \item What portion of the use of force happened under different lighting conditions?
+
+    \item What portion of the use of force happened indoors against outdoors?
+
+    \item What portion of the use of force happened under different weather conditions?
+
+    \item What portion of the use of force happened under different locations?
+
+    \item Under what combinations of different conditions (lighting, indoor or outdoor, weather, location) is a police officer more likely to use force?
+
+    \end{enumerate}
+
+\item How does race may affect officers’ decision to use force in under different environment?
+
+    \begin{enumerate}
+
+    \item Which race is most affected by the lighting condition?
+
+    \item Which race is most affected by the indoor or outdoor scenario?
+
+    \item Which race is most affected by the weather conditions?
+
+    \item Which race is most affected by the locations?
+
+    \item How does the top 10 combination of conditions vary from race to race?
+
+    \end{enumerate}
+
+\end{enumerate}
+
+
 
 
 
 \section{Data Visualization}
 
-\begin{itemize}
+\begin{enumerate}
 
-\item The number of allegations that were sustained vs nonsustained over years.
+\item Five histograms for top 5 conditions, each shows composition of the condition when use of force occurred to the four races (x-axis)
 
-\item For the 4 categories of allegations that we focus on, what’s the impact on promotion/rank/salary from the number of allegations filed on each individual.
+\item A box plot that lays out the age distribution of the victims for four races
 
-\item For the 4 categories of allegations that we focus on, what’s the impact on promotion/rank/salary from the rank or length of career (representation of authority).
-
-\end{itemize}
+\end{enumerate}
 
 
 
 \section{Interactive Data Visualization}
 
-\begin{itemize}
+\begin{enumerate}
 
-\item The ratio of nonsustained allegation vs sustained on the community region map, with the categories shown when hovering the mouse on top.
+\item Geo-spatial graphs of Chicago racial clusters for 4 major race categories (white, asian, hispanic, black) in each community/neighborhood. For each of these graphs, the use of force allegations would be layered on top to demonstrate the correlation between race composition and frequency of use of force.
 
-\item The racial composition of the sustained and unsustained officers on two pie charts as well as the composition of whether they are in different race groups from the complainant, with the categories shown when hovering the mouse on top.
+\item A pie chart with the distribution of the race of the victims with the racial composition of the police officers involved packed in each pie section
 
-\item The trend of the percentage of repeaters who get awards and promoted over years for the 4 categories we focus on. Users can view from one category or (awards or promoted).
-
-\end{itemize}
+\end{enumerate}
 
 
 
 
 \section{Graph Analytics}
 
-\begin{itemize}
+\begin{enumerate}
 
-\item For each category (such as ``use of force"), determine whether there are clusters of police officers that operate as groups with offenses under the same category.
+\item Do the use of force allegations happen in specific locations (with factors such as racial distribution, income distribution, etc...), or are they more spread out throughout the entire Chicago metropolitan area?
 
-\item For each of the categories, do the allegations happen in specific locations (with factors such as racial distribution, income distribution, etc...), or are they more spread out throughout the Chicago metropolitan area?
+\item Are there clusters of police officers that are co-accused of use of force against victims of a different race?
 
-\end{itemize}
+\end{enumerate}
 
 
 
 \section{Natural Language Processing}
 
-Most of the complaint information is lost during classification, leading to preprocessed data that is already biased. We would like to perform analysis on raw complaint data to determine
+Most of the complaint information is lost during classification, leading to preprocessed data that is already biased. We would like to further investigate the effect of race by digging deeper into the complaint reports. Specifically, we would like to see whether racial discrimination against non-white subjects plays a significant role in whether the police officer uses force or not.
 
-\begin{itemize}
+\begin{enumerate}
 
-\item Whether violent use of force (i.e. ``... punched ... on the nose ...") leads to a higher rate of the accused being sustained, and how does it affects the officer’s career prospect?
+\item Whether violent uses of force (i.e. ``... punched ... on the nose ...") happens more often to victim of non-white races?
 
-\begin{itemize}
+    \begin{enumerate}
 
-\item Whether use of force is correctly categorized or not?
+    \item Furthermore, investigate whether this is common for situations where the police officer and the subject are of different race?
 
-\end{itemize}
+    \end{enumerate}
 
-\item How racial aspects influence the rate of being sustained, and how it affects the officer’s career prospect?
+\item Does the usage of vulgar language (``fucking ...") or racial slurs by the accused officer (``nigger") happen more often to victims of non-white races? What about cases where the police officer and the subject are of different races?
 
-\item Does the usage of vulgar language or racial slurs by the accused officer (``fucking ...", ``nigger") affect the rate of being sustained?
-
-\begin{itemize}
-
-\item Do these complaints get neglected?
-
-\item Does the same officer get accused of repeated use of vulgar language or racial slurs?
-
-\item Categorize and count these complaints and plot them over time and see whether the problem is getting worse
-
-\end{itemize}
-
-\end{itemize}
-
-
-\begin{thebibliography}{9}
-
-\bibitem{badcops}
-Rob Arthur. 2015. How To Predict Bad Cops In Chicago. (December 2015). Retrieved September 27, 2021 from https://fivethirtyeight.com/features/how-to-predict-which-chicago-cops-will-commit-misconduct/
-
-\end{thebibliography}
+\end{enumerate}
 
 
 \end{document}
