@@ -132,3 +132,10 @@ do a police officer more likely to use force?
  CLEAR             | Outdoor           | POOR ARTIFICIAL    | Street                               |  1313
  CLEAR             | Outdoor           | DAYLIGHT           | Alley                                |  1294
  CLEAR             | Outdoor           | POOR ARTIFICIAL    | Sidewalk                             |  1198
+
+3a. Which race is most affected by the lighting condition?
+
+3b. Which race is most affected by the indoor or outdoor scenario?
+3c. Which race is most affected by the weather conditions?
+3d. Which race is most affected by the locations?
+3e. How does the top 10 combination of conditions vary from race to race?
