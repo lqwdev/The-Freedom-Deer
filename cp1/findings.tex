@@ -37,9 +37,7 @@ We would like to first gather some information about the officers and victims in
 
 \subsubsection*{1a. What is the racial distribution of the victims involved in cases of use of force?}
 
-SQL file: \texttt{1a.sql}
-
-Results:
+\underline{Database Query Results:}
 
 \begin{verbatim}
           subject_race          | count
@@ -56,9 +54,7 @@ From the results, we can see the race distribution of the subjects involved in t
 
 \subsubsection*{1b. What is the racial distribution of police officers involved in these cases?}
 
-SQL file: \texttt{1b.sql}
-
-Results:
+\underline{Database Query Results:}
 
 \begin{verbatim}
            officer_race         | count
@@ -75,9 +71,7 @@ From the results, we can see the race distribution of police officers involved i
 
 \subsubsection*{1c. What portion of the total use of force cases involves an officer that is of a different race than that of the victim (cross-race use of force)?}
 
-SQL file: \texttt{1c.sql}
-
-Results:
+\underline{Database Query Results:}
 
 \begin{verbatim}
  cross_race_percentage
@@ -90,9 +84,7 @@ Based on the results, we can see that cross-race use of force cases make up 73.2
 
 \subsubsection*{1d. What portion of the cases in use of force containing firearm usage.}
 
-SQL file: \texttt{1d.sql}
-
-Results:
+\underline{Database Query Results:}
 
 \begin{verbatim}
  firearm_used_percentage
@@ -105,9 +97,7 @@ Based on the results, we can see that only 1.5\% use of force cases involved the
 
 \subsubsection*{1e. What are the percentages of use of force cases grouped by officer race and subject race? (i.e. what is the percentage of white officers using force on black subjects)}
 
-SQL file: \texttt{1e.sql}
-
-Results:
+\underline{Database Query Results:}
 
 \begin{verbatim}
  percentage |          officer_race          |          subject_race
@@ -151,9 +141,7 @@ Next we want to investigate the influence of environmental factors on a police o
 
 \subsubsection*{2a. What portion of the use of force happened under different lighting conditions?}
 
-SQL file: \texttt{2a.sql}
-
-Results:
+\underline{Database Query Results:}
 
 \begin{verbatim}
  lighting_condition | percentage
@@ -171,9 +159,7 @@ This table shows that the use of force cases are dominated by the scenarios with
 
 \subsubsection*{2b. What portion of the use of force happened indoors against outdoors?}
 
-SQL file: \texttt{2b.sql}
-
-Results:
+\underline{Database Query Results:}
 
 \begin{verbatim}
  indoor_or_outdoor | percentage
@@ -187,9 +173,7 @@ This shows that most cases occurred outdoor with still descent amount of cases h
 
 \subsubsection*{2c. What portion of the use of force happened under different weather conditions?}
 
-SQL file: \texttt{2c.sql}
-
-Results:
+\underline{Database Query Results:}
 
 \begin{verbatim}
  weather_condition | percentage
@@ -208,9 +192,7 @@ This indicates that adverse weather condition might not be a attribute for use o
 
 \subsubsection*{2d. What portion of the use of force happened under different locations?}
 
-SQL file: \texttt{2d.sql}
-
-Results:
+\underline{Database Query Results:}
 
 \begin{verbatim}
            location_recode            | percentage
@@ -300,9 +282,7 @@ This shows that police's use of force more likely to occur on street/sidewalks b
 
 \subsubsection*{2e. Under what combinations of different conditions (lighting, indoor or outdoor, weather, location) is a police officer more likely to use force?}
 
-SQL file: \texttt{2e.sql}
-
-Results:
+\underline{Database Query Results:}
 
 \begin{verbatim}
  weather | indoor_or_outdoor | lighting_condition |         location_recode         | count
