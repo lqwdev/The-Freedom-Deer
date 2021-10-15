@@ -241,4 +241,104 @@ This shows that police's use of force more likely to occur on street/sidewalks b
 
 This table provides a more comprehensive of the narratives for the most common scenarios of police's use of force. Cases often time happened with good lighting on the street.
 
+
+\section*{3. How does the influence of the top 10 combinations of conditions vary from race to race?}
+
+\subsubsection*{Race: Black}
+
+\underline{Database Query Results:}
+
+\begin{verbatim}
+ weather | indoor_outdoor |    lighting     |            location             |  pct
+---------+----------------+-----------------+---------------------------------+--------
+ CLEAR   | Outdoor        | DAYLIGHT        | Street                          | 0.0891
+ CLEAR   | Outdoor        | GOOD ARTIFICIAL | Street                          | 0.0818
+ CLEAR   | Outdoor        | DAYLIGHT        | Sidewalk                        | 0.0774
+ CLEAR   | Outdoor        | GOOD ARTIFICIAL | Sidewalk                        | 0.0612
+ CLEAR   | Outdoor        | NIGHT           | Street                          | 0.0336
+ CLEAR   | Outdoor        | NIGHT           | Sidewalk                        | 0.0277
+ CLEAR   | Indoor         | GOOD ARTIFICIAL | Police Facility/Veh Parking Lot | 0.0269
+ CLEAR   | Indoor         | GOOD ARTIFICIAL | Apartment                       | 0.0214
+ CLEAR   | Outdoor        | DAYLIGHT        | Alley                           | 0.0205
+ CLEAR   | Outdoor        | POOR ARTIFICIAL | Street                          | 0.0204
+\end{verbatim}
+
+\subsubsection*{Race: White}
+
+\underline{Database Query Results:}
+
+\begin{verbatim}
+ weather | indoor_outdoor |    lighting     |            location             |  pct
+---------+----------------+-----------------+---------------------------------+--------
+ CLEAR   | Outdoor        | GOOD ARTIFICIAL | Street                          | 0.1057
+ CLEAR   | Outdoor        | GOOD ARTIFICIAL | Sidewalk                        | 0.0699
+ CLEAR   | Outdoor        | DAYLIGHT        | Street                          | 0.0645
+ CLEAR   | Outdoor        | DAYLIGHT        | Sidewalk                        | 0.0433
+ CLEAR   | Outdoor        | NIGHT           | Street                          | 0.0336
+ CLEAR   | Indoor         | GOOD ARTIFICIAL | Police Facility/Veh Parking Lot | 0.0300
+ CLEAR   | Outdoor        | NIGHT           | Sidewalk                        | 0.0235
+ CLEAR   | Indoor         | GOOD ARTIFICIAL | Residence                       | 0.0234
+ CLEAR   | Indoor         | GOOD ARTIFICIAL | Apartment                       | 0.0205
+ CLEAR   | Outdoor        | POOR ARTIFICIAL | Sidewalk                        | 0.0180
+\end{verbatim}
+
+\subsubsection*{Race: Hispanic}
+
+\underline{Database Query Results:}
+
+\begin{verbatim}
+ weather | indoor_outdoor |    lighting     |            location             |  pct
+---------+----------------+-----------------+---------------------------------+--------
+ CLEAR   | Outdoor        | GOOD ARTIFICIAL | Street                          | 0.1075
+ CLEAR   | Outdoor        | GOOD ARTIFICIAL | Sidewalk                        | 0.0748
+ CLEAR   | Outdoor        | DAYLIGHT        | Street                          | 0.0630
+ CLEAR   | Outdoor        | DAYLIGHT        | Sidewalk                        | 0.0457
+ CLEAR   | Outdoor        | NIGHT           | Street                          | 0.0361
+ CLEAR   | Outdoor        | NIGHT           | Sidewalk                        | 0.0334
+ CLEAR   | Indoor         | GOOD ARTIFICIAL | Apartment                       | 0.0285
+ CLEAR   | Indoor         | GOOD ARTIFICIAL | Police Facility/Veh Parking Lot | 0.0284
+ CLEAR   | Indoor         | GOOD ARTIFICIAL | Residence                       | 0.0244
+ CLEAR   | Outdoor        | POOR ARTIFICIAL | Sidewalk                        | 0.0222
+\end{verbatim}
+
+\subsubsection*{Race: Asian/Pacific Islander}
+
+\underline{Database Query Results:}
+
+\begin{verbatim}
+ weather | indoor_outdoor |    lighting     |            location             |  pct
+---------+----------------+-----------------+---------------------------------+--------
+ CLEAR   | Outdoor        | GOOD ARTIFICIAL | Street                          | 0.0928
+ CLEAR   | Outdoor        | DAYLIGHT        | Street                          | 0.0905
+ CLEAR   | Outdoor        | GOOD ARTIFICIAL | Sidewalk                        | 0.0696
+ CLEAR   | Outdoor        | NIGHT           | Sidewalk                        | 0.0487
+ CLEAR   | Outdoor        | DAYLIGHT        | Sidewalk                        | 0.0418
+ CLEAR   | Indoor         | GOOD ARTIFICIAL | Apartment                       | 0.0348
+ CLEAR   | Outdoor        | NIGHT           | Street                          | 0.0325
+ CLEAR   | Indoor         | GOOD ARTIFICIAL | Residence                       | 0.0325
+ CLEAR   | Outdoor        | DAYLIGHT        | Alley                           | 0.0302
+ CLEAR   | Indoor         | GOOD ARTIFICIAL | Police Facility/Veh Parking Lot | 0.0278
+\end{verbatim}
+
+\subsubsection*{Race: Native American/Alaskan Native}
+
+\underline{Database Query Results:}
+
+\begin{verbatim}
+ weather | indoor_outdoor |    lighting     |               location               |  pct
+---------+----------------+-----------------+--------------------------------------+--------
+ CLEAR   | Outdoor        | GOOD ARTIFICIAL | Sidewalk                             | 0.0926
+ CLEAR   | Outdoor        | DAYLIGHT        | Street                               | 0.0741
+ CLEAR   | Outdoor        | DAYLIGHT        | Sidewalk                             | 0.0741
+         |                |                 | Street                               | 0.0741
+ CLEAR   | Indoor         | GOOD ARTIFICIAL | Apartment                            | 0.0741
+ CLEAR   | Outdoor        | GOOD ARTIFICIAL | Street                               | 0.0741
+ CLEAR   | Outdoor        | DAYLIGHT        | Alley                                | 0.0370
+ CLEAR   | Outdoor        | NIGHT           | Alley                                | 0.0370
+ CLEAR   | Indoor         | GOOD ARTIFICIAL | Residence Porch/Hallway              | 0.0370
+ CLEAR   | Outdoor        | GOOD ARTIFICIAL | Parking Lot/Garage (Non-Residential) | 0.0370
+\end{verbatim}
+
+
+
 \end{document}
