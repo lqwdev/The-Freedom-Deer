@@ -51,7 +51,7 @@ Results:
  Native American/Alaskan Native |    54
 \end{verbatim}
 
-From the results, we can see the race distribution of the subjects involved in use of force cases. As we can see, black subjects are most common.
+From the results, we can see the race distribution of the subjects involved in the use of force cases. The table shows that black subjects are the dominant race which has contributed to cases more than the total of the other race. However, as we know that black people do not dominate the total population in Chicago. This indicates a worth-of-investigaing racial discrimination involved in the police use of force
 
 
 \subsubsection*{1b. What is the racial distribution of police officers involved in these cases?}
@@ -70,7 +70,7 @@ Results:
  Native American/Alaskan Native |   310
 \end{verbatim}
 
-From the results, we can see the race distribution of police officers involved in use of force cases. At the top is white police officers.
+From the results, we can see the race distribution of police officers involved in use of force cases. At the top is white police officers whose count exceeds the total of the rest of the races, especially in contrast to the number of Asian/Pacific and Native American/Alaskan Native police officers. This potentially leads to a white-dominated culture in police department
 
 
 \subsubsection*{1c. What portion of the total use of force cases involves an officer that is of a different race than that of the victim (cross-race use of force)?}
@@ -85,10 +85,10 @@ Results:
               0.732046
 \end{verbatim}
 
-Based on the results, we can see that cross-race use of force cases make up 73.2\% of total use of force cases.
+Based on the results, we can see that cross-race use of force cases make up 73.2\% of total use of force cases, which is less surprising considering the fact that victims are dominated by black people and police offers are dominated with white. Nevertheless, 73.2\% is high enough to raise follow-up questions about the different dynamics between police and victims. Specifically, we will look into the racial composition of the cross-race cases.
 
 
-\subsubsection*{1d. What portion of the cases in use of force cases contained firearm usage.}
+\subsubsection*{1d. What portion of the cases in use of force containing firearm usage.}
 
 SQL file: \texttt{1d.sql}
 
@@ -100,7 +100,7 @@ Results:
                   0.0153
 \end{verbatim}
 
-Based on the results, we can see that only 1.5\% use of force cases involved the usage of firearms.
+Based on the results, we can see that only 1.5\% use of force cases involved the usage of firearms. This indicates a less number of firearm usage than what we expected, despite of a large media coverage on this topic.
 
 
 \subsubsection*{1e. What are the percentages of use of force cases grouped by officer race and subject race? (i.e. what is the percentage of white officers using force on black subjects)}
@@ -142,7 +142,7 @@ Results:
    0.000030 | Asian/Pacific Islander         | Native American/Alaskan Native
 \end{verbatim}
 
-The results give us a high level overview of the racial distribution of both subjects and police officers in all the use of force cases. A cursive scan shows us that 41\% of all cases come from white police officers' use of force on black subjects. Further analysis shows that cases with black subjects make up 71.58\% of all use of force cases.
+The results provides a more detailed view of the racial components of the subjects and police officers in all the use of force cases. A cursive scan shows us that 41\% of all cases come from white police officers' use of force on black subjects. Further analysis shows that cases with black subjects make up 71.58\% of all use of force cases. This indicates that black people are more prone to police's use of force.
 
 
 \section*{2. Environmental Factors That May Affect an Officer’s Decision to Use Force}
@@ -167,6 +167,8 @@ Results:
  DAWN               |   0.005551
 \end{verbatim}
 
+This table shows that the use of force cases are dominated by the scenarios with good lighting (either with daylight of good artificial light). This, to some extend, suggests that lack of visibility is not a risk for someone to experience use of force, which is opposite to our hypothesis.
+
 \subsubsection*{2b. What portion of the use of force happened indoors against outdoors?}
 
 SQL file: \texttt{2b.sql}
@@ -180,6 +182,8 @@ Results:
  Indoor            |   0.240962
                    |   0.053791
 \end{verbatim}
+
+This shows that most cases occurred outdoor with still descent amount of cases happening indoor. Civilians are usually supposed to be under protection at their esidential area unless severe criminal commitment. Thus, it would be interesting to look into the conditions and the allegation outcomes of these cases.
 
 \subsubsection*{2c. What portion of the use of force happened under different weather conditions?}
 
@@ -199,6 +203,8 @@ Results:
  SEVERE CROSS WIND |   0.001477
  SLEET/HAIL        |   0.001313
 \end{verbatim}
+
+This indicates that adverse weather condition might not be a attribute for use of force which is opposite to our hypothesis.
 
 \subsubsection*{2d. What portion of the use of force happened under different locations?}
 
@@ -290,6 +296,8 @@ Results:
  Cta Tracks - Right Of Way            |   0.000015
 \end{verbatim}
 
+This shows that police's use of force more likely to occur on street/sidewalks but not by much
+
 \subsubsection*{2e. Under what combinations of different conditions (lighting, indoor or outdoor, weather, location) is a police officer more likely to use force?}
 
 SQL file: \texttt{2e.sql}
@@ -313,6 +321,6 @@ Results:
  CLEAR   | Outdoor           | POOR ARTIFICIAL    | Sidewalk                        |  1198
 \end{verbatim}
 
-
+This table provides a more comprehensive of the narratives for the most common scenarios of police's use of force. Cases often time happened with good lighting on the street.
 
 \end{document}
