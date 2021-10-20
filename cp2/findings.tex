@@ -16,14 +16,46 @@
 
 \setlength{\parindent}{0em}
 \setlength{\parskip}{1em}
-\titlespacing*{\section}
-{0pt}{0.5em}{0.5em}
+\titlespacing*{\section}{0pt}{0.2em}{0.5em}
+\titlespacing*{\subsection}{0pt}{0.2em}{0.2em}
+\titlespacing*{\subsubsection}{0pt}{0.2em}{0.2em}
 
 \title{Checkpoint 2: Data Exploration}
 \author{The Freedom Deer: Tianchang Li, Hualiang Qin, Qingwei Lan}
 
 \begin{document}
 \maketitle
+
+
+\section{Tableau Review}
+
+In this section we will present an overview of the experience of our usage of Tableau, including what we believe to be advantages and disadvantages of the software.
+
+\subsection{Advantages}
+
+\begin{enumerate}
+
+\item Tableau provides great visualiations and an intuitive user interface for handling these data tasks. The built-in graphs are easy to use and the software makes it easy to switch between different graphs. The software also makes sure that we are using the correct data values for different types of graphs.
+
+\item Once connected, exploring and processing the data becomes an easy task. The software provides an overview of all the tables and the fields of each table. Table joining and field filtering is also straightforward.
+
+\item Tableau makes it hard to make mistakes because it restricts the way we can visualize data. In other words, it won't allow us to use a certain type of graph unless our data satifies all constraints.
+
+\item Tableau provides the capability to export workbooks. These workbooks are represented as structured XML data internally and this allows it to be checked into source control, making it easy to track version history.
+
+\end{enumerate}
+
+\subsection{Disadvantages}
+
+\begin{enumerate}
+
+\item Tableau's license is rather difficult to setup, even being a student. It requires us to upload our student IDs and wait for verfication. This process can fail unless the photo is taken clearly.
+
+\item Connecting Tableau to a remote server is easy, but the connection relies heavily on the internet bandwidth. In most cases, the connection is not stable and the visualization tasks are extremely slow.
+
+\item Connecting Tableau with local Postgres is hard. It requires us to download a specific driver to connect the software with the database and requires us to enter specific information for the connection. The error messages that are associated with the failures to connect are counter-intuitive and provide no information as to why the connection is failing, making it impossible to debug. We spent hours on the connection problems alone.
+
+\end{enumerate}
 
 
 \end{document}
