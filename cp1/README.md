@@ -18,7 +18,7 @@ In this section, we will list all our research questions that need to be answere
 
 ## Information About Victims and Officers
 
-**1a. What is the racial distribution of the victims and officers involved in cases of use of force in tactical response reports?**
+**1a. What is the difference between the subject race distribution and its distribution in the total population?**
 
 SQL File: `1a.sql`
 
@@ -38,12 +38,6 @@ SQL File: `1c.sql`
 
 Command: `psql cpdb cpdb < src/1c.sql`
 
-
-**1d. What are the top 10 most populous areas and what are the racial distributions?**
-
-SQL File: `1d.sql`
-
-Command: `psql cpdb cpdb < src/1d.sql`
 
 
 ## Environmental Factors That May Affect an Officer’s Decision to Use Force

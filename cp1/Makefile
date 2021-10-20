@@ -1,5 +1,5 @@
 findings.pdf: findings.tex
-	pdflatex $^ && rm -rf *.aux *.log
+	pdflatex $^
 
 dist: src/* README.md findings.pdf
 	zip checkpoint-1.zip $^
