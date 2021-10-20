@@ -31,36 +31,23 @@ The main goal of our research is to investigate the conditions under which polic
 
 We would like to first gather some background information about the officers and victims in the use of force cases, such as race distribution. The data in this section is taken from the \texttt{trr\_trr}, \texttt{data\_officer}, and \texttt{data\_racepopulation} datasets.
 
-\subsection*{1a. What is the racial distribution of the victims and officers involved in cases of use of force in tactical response reports?}
+\subsection*{1a. What is the difference between the subject race distribution and its distribution in the total population?}
 
-\underline{\textbf{Subject Race:}}
 \begin{verbatim}
-          subject_race          | count
---------------------------------+-------
- Black                          | 49747
- Hispanic                       |  9369
- White                          |  6540
- Asian/Pacific Islander         |   431
- Native American/Alaskan Native |    54
+   race   |   trr_subject_pct   | population_percent
+----------+---------------------+--------------------
+ Asian    |  0.6516381669463721 |  5.914174593050154
+ White    |   9.887966616773257 |  32.20029878751453
+ Other    | 0.08164376105592598 |  1.862692451658661
+ Hispanic |  14.165192543203156 |   29.0992465534356
+ Black    |   75.21355891202128 | 30.923587614341063
 \end{verbatim}
 
+From the results, we can see the race distribution of the subjects of police use of force cases and the distribution of each race in the total population of Chicago.
 
-\underline{\textbf{Police Officer Race:}}
-\begin{verbatim}
-           officer_race         | count
---------------------------------+-------
- White                          | 38731
- Hispanic                       | 15064
- Black                          | 10599
- Asian/Pacific                  |  2028
- Native American/Alaskan Native |   310
-\end{verbatim}
+The table shows that black subjects are the dominant race which has contributed to cases more than the total of all other races combined with a total of 75\%. Furthermore, the table shows black people only make up 30\% of the total population in Chicago. This indicates racial discrimination involved in the police use of force that requires futher investigation.
 
-From the results, we can see the race distribution of the subjects and polie officers involved in the use of force cases.
-
-The table shows that black subjects are the dominant race which has contributed to cases more than the total of all other races combined. However, as we know that black people do not dominate the total population in Chicago, this indicates a worth-of-investigating racial discrimination involved in the police use of force.
-
-From the results, we can see the race distribution of police officers involved in use of force cases. At the top is white police officers whose count exceeds the total of the rest of the races, especially in contrast to the number of Asian/Pacific and Native American/Alaskan Native police officers. This potentially leads to a white-dominated culture in police department.
+To gather more information, we can dig deeper into cases where population percentage is larger than subject percentage and investigate how large the difference is.
 
 
 \subsection*{1b. What portion of these use of force cases involves an officer that is of a different race than that of the victim (cross-race use of force) and what are the racial distributions of the subjects and officers in these cases?}
