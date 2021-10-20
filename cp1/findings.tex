@@ -11,13 +11,12 @@
 \fancypagestyle{plain}{
     \renewcommand{\headrulewidth}{0pt}
     \fancyhf{}
-    \fancyfoot[R]{P. \thepage}
+    \fancyfoot[R]{Page. \thepage}
 }
 
 \setlength{\parindent}{0em}
 \setlength{\parskip}{1em}
-\titlespacing*{\section}
-{0pt}{0.5em}{0.5em}
+\titlespacing*{\section}{0pt}{0.5em}{0.5em}
 
 \title{Checkpoint 1: SQL Analytics Findings}
 \author{The Freedom Deer: Tianchang Li, Hualiang Qin, Qingwei Lan}
@@ -107,87 +106,6 @@ The results provides a more detailed view of the racial components of the subjec
 \end{verbatim}
 
 Based on the results, we can see that only 1.5\% use of force cases involved the usage of firearms. This indicates a less number of firearm usage than what we expected, despite large media coverage on this topic.
-
-
-\subsection*{1d. What are the top 10 most populous areas and what are the racial distributions?}
-
-\begin{verbatim}
- area |      race       | population | percentage
-------+-----------------+------------+------------
- 1527 | Hispanic        |      62232 |     0.4319
- 1527 | White           |      55743 |     0.3868
- 1527 | Asian           |      17373 |     0.1206
- 1527 | Black           |       4782 |     0.0332
- 1527 | Other           |       3645 |     0.0253
- 1527 | Native American |        321 |     0.0022
- -------------------------------------------------
- 1531 | White           |     150551 |     0.7498
- 1531 | Hispanic        |      20025 |     0.0997
- 1531 | Black           |      13305 |     0.0663
- 1531 | Asian           |      12277 |     0.0611
- 1531 | Other           |       4320 |     0.0215
- 1531 | Native American |        308 |     0.0015
- -------------------------------------------------
- 1532 | Hispanic        |     133005 |     0.6637
- 1532 | Black           |      33033 |     0.1648
- 1532 | White           |      29371 |     0.1466
- 1532 | Asian           |       3086 |     0.0154
- 1532 | Other           |       1682 |     0.0084
- 1532 | Native American |        214 |     0.0011
- -------------------------------------------------
- 1536 | Black           |      76399 |     0.6182
- 1536 | Hispanic        |      35381 |     0.2863
- 1536 | White           |       9925 |     0.0803
- 1536 | Other           |       1389 |     0.0112
- 1536 | Asian           |        258 |     0.0021
- 1536 | Native American |        223 |     0.0018
- -------------------------------------------------
- 1541 | White           |      60488 |     0.4289
- 1541 | Hispanic        |      29746 |     0.2109
- 1541 | Black           |      25322 |     0.1795
- 1541 | Asian           |      20796 |     0.1474
- 1541 | Other           |       4335 |     0.0307
- 1541 | Native American |        351 |     0.0025
- -------------------------------------------------
- 1542 | White           |     138045 |     0.6920
- 1542 | Hispanic        |      45438 |     0.2278
- 1542 | Asian           |      10711 |     0.0537
- 1542 | Other           |       2967 |     0.0149
- 1542 | Black           |       2022 |     0.0101
- 1542 | Native American |        299 |     0.0015
- -------------------------------------------------
- 1543 | Hispanic        |     139854 |     0.5654
- 1543 | Black           |      52219 |     0.2111
- 1543 | White           |      51491 |     0.2082
- 1543 | Asian           |       2001 |     0.0081
- 1543 | Other           |       1561 |     0.0063
- 1543 | Native American |        247 |     0.0010
- -------------------------------------------------
- 1545 | White           |      51775 |     0.4049
- 1545 | Hispanic        |      42329 |     0.3310
- 1545 | Black           |      23039 |     0.1802
- 1545 | Asian           |       8148 |     0.0637
- 1545 | Other           |       2393 |     0.0187
- 1545 | Native American |        185 |     0.0014
- -------------------------------------------------
- 1548 | Hispanic        |      73441 |     0.6219
- 1548 | Black           |      39440 |     0.3340
- 1548 | White           |       4300 |     0.0364
- 1548 | Other           |        529 |     0.0045
- 1548 | Asian           |        239 |     0.0020
- 1548 | Native American |        144 |     0.0012
- -------------------------------------------------
- 1550 | Hispanic        |      94610 |     0.5727
- 1550 | Asian           |      25894 |     0.1567
- 1550 | White           |      24307 |     0.1471
- 1550 | Black           |      19044 |     0.1153
- 1550 | Other           |       1173 |     0.0071
- 1550 | Native American |        173 |     0.0010
-\end{verbatim}
-
-The results above show that in the 10 most populous regions in the Chicago metropolitan area, the Hispanic population makes up most of the population and the Black population is not the dominant one, but previous data shows that the Black population is the dominant race in police use of force cases.
-
-Future research direction would be to look into the use of force cases happening in these most populous areas. We would also look into use of force cases happening in regions where the Black population make up the majority of the population.
 
 
 \section*{2. Environmental Factors That May Affect an Officer’s Decision to Use Force}
@@ -341,7 +259,9 @@ Based on the results for each race, we can see that most use of force cases happ
 
 \section*{Conclusion and Future Research}
 
-Based on the race distributions of victims and police officers, we can see that the black population is the dominant race in the victims of police use of force. We also saw that cross-race use of force is common and made up 73\% of all the use of force cases. Furthermore we also saw that a white police officer is more likely to use force on a black subject. These results suggest that the black population is more prone to police use of force and we would like to dig deeper into racial issues. On the other hand, in the most populous areas in Chicago, the Black population is not the dominant race. We would look into use of force cases happening in these areas and cases happening in areas where the black population is the dominant race.
+Based on the race distributions of victims and police officers, we can see that the black population is the dominant race in the victims of police use of force, making up 75\% of all subjects in police use of force cases, while only making up 30\% of the total Chicago population.
+
+We also saw that cross-race use of force is common, making up 73\% of all police use of force cases. Furthermore we also saw that a white police officer is more likely to use force on a black subject. These results suggest that the black population is more prone to police use of force and we would like to dig deeper into racial issues. On the other hand, in the most populous areas in Chicago, the Black population is not the dominant race. We would look into use of force cases happening in these areas and cases happening in areas where the black population is the dominant race.
 
 We also investigated how environmental conditions affected a police officer's decision to use force and concluded that most police use of force cases happened in favorable environmental condtions, such as good lighting and good weather. Since these environmental conditions didn't seem to influence an officer's decision that much, we would like to further investigate the physical location in which the case occurred, such as the neighborhood's socioeconomic status, median income, and crime rate. We believe that this will provide us with more information going forward.
 
