@@ -1,15 +1,15 @@
 # How to run `.sql` source files?
 
-To run `.sql` files on the CPDB database, use the following.
+To run `.sql` files on the local CPDB database, use the following.
 
 ```bash
-psql cpdb cpdb < <filename>.sql
+psql -U cpdb cpdb < filename.sql
 ```
 
 For example, to run the the code for question 1a, run the following
 
 ```bash
-psql cpdb cpdb < 1a.sql
+psql -U cpdb cpdb < 1a.sql
 ```
 
 # Research Questions
