@@ -20,10 +20,10 @@ To open our source files
 
 There are some extra steps to view the results for each file, and they are listed below:
 
-* **age_dashboard.twb**: Navigate to "**Dashboard 1**"
+* **`age_dashboard.twb`**: Navigate to "**Dashboard 1**"
 
-* **cross_race_dashboard**: Navigate to "**Sheet 1**"
+* **`cross_race_dashboard.twb`**: Navigate to "**Sheet 1**"
 
-* **environment_dashboard**: Navigate to "**Dashboard 1**"
+* **`environment_dashboard.twb`**: Navigate to "**Dashboard 1**"
 
-* **populatin_subject**: Navigate to "**Sheet 1**"
+* **`populatin_subject.twb`**: Navigate to "**Sheet 1**"
