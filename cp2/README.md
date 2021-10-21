@@ -1,10 +1,12 @@
 # How to open `.twb` files?
 
-## Assumptions
+## Prerequisites
 
 1. To open our `.twb` files, you'll need to have the CPDB database set up locally.
 
 2. You will need to have the Tableau software installed on your computer, along with the PostgreSQL driver.
+
+3. You will need to have your Tableau software connected to your local PostgreSQL database.
 
 ## Steps
 
