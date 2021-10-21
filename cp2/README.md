@@ -13,3 +13,15 @@ To open our source files
 1. Double-click the `.twb` file in the `src/` folder.
 
 2. Enter your own computer username and password.
+
+### Extra steps for each file
+
+There are some extra steps to view the results for each file, and they are listed below:
+
+* **age_dashboard.twb**: Navigate to "**Dashboard 1**"
+
+* **cross_race_dashboard**: Navigate to "**Sheet 1**"
+
+* **environment_dashboard**: Navigate to "**Dashboard 1**"
+
+* **populatin_subject**: Navigate to "**Sheet 1**"
