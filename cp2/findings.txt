@@ -1,0 +1,33 @@
+image1
+From the above chart, we can see that among all the race, subject of use of force cases
+that is black, white, and hispanic have higher age median than asian and native american.
+When we look into the gender, we can see that hispanic have the largest difference between
+male and female. In the future, we can explore if the higher age median of race correlate with
+their larger proportion of population. Also, we would like to prone into the hispanic to see if culture
+factor played a role.
+
+image2 + image4
+These four chart are reflecting the occurrence of use of force under different four conditions (Lighting,
+Indoor/Outdoor, Weather, Location). In terms of Location. we can see that the majority of use of force
+happened at street and sidewalk. Outdoor is more preferable than indoor. The daylight plus good artificial
+light which can provide a better sight (bright color) outrace the lighting conditions that provided worse sight.
+(dark color) The weather condition is almost dominate by the clear weather. We don't know if these conditions
+are independent. Intuitively, clear weather and (daylight + good artificial) both imply better sight, while (sidewalk
++ street) and outdoor both imply broader place. Further PCA (principal component analysis) might have us draw a better
+conclusion on this. What's more, race seems independent to the effect of these environmental factors.
+
+image3
+In this chart, the subject race is all capitalized. By looking at the chart, we can see that top three cross race situation
+are white officer to black subject, black officer to black subject, and hispanic officer to black subject. Surprisingly
+and unexpectedly, we found that black officer to black subject is one of the top three situation. Which lead us to think
+of the question that if the discrimination even happen on the own race. Alternatively, this phenomenon can be explained
+by the fact that black subject have the higher crime rate, so the occurrence of this situation is solely reflecting the
+portion of each race of officers in the population of officers.
+
+image5
+The orange bar represent the portion of race in the whole population. The blue bar represents the portion of race in
+all subjects. We can easily observe that black, hispanic, and white are the majority of the population ,and they
+have almost the same portion in the population while black solely account for more than 70 percentage of all subjects,
+while hispanic and white each accounts for only about 10-15 percentage of subjects. This result make people could not help
+suspecting the existence of racial discrimination among police officers. We still need to do some investigations on
+the crime rate of each race in reality before we can make a solid conclusion on the existence of racial discrimination.
