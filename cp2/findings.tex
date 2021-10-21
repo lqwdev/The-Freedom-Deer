@@ -4,6 +4,9 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{titlesec}
 \usepackage{fancyhdr}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage[justification=centering]{caption}
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -25,6 +28,72 @@
 
 \begin{document}
 \maketitle
+
+\section{Data Visualizations}
+
+\subsection{Boxplot for Subject Age Distribution Grouped by Race and Gender}
+
+We plotted two box and whisker plots, one for subject age over subject race, and one for subject age over subject race and gender.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.30]{image1.png}
+\caption{Box and whisker plot of subject age over race and gender.}
+\label{fig:subjage}
+\end{figure}
+
+From Figure \ref{fig:subjage}, we can see that among all the races, subjects of use of force cases that is Black, White, and Hispanic have higher age median than that of Asians and Native Americans. When we look into the gender, we can see that Hispanics have the largest difference between male and female. In the future, we can explore if the higher age median of race correlate with their larger proportion of population. Also for the Hispanic population, we would like to dig deeper to see if culture factor played a role.
+
+
+
+\subsection{Influence of Different Environmental Conditions on Use of Force Cases for each Subject Race}
+
+In this section, we plot a horizontal barchart for each environmental condition. In each barchart, we plot the percentage of cases happening under different conditions for each race.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.35]{image2.png}
+\includegraphics[scale=0.35]{image4.png}
+\caption{Barchart of the frequency of police use of force cases in different environmental conditions (lighting, weather, location, indoors/outdoors) over each race}
+\label{fig:conds}
+\end{figure}
+
+
+The four charts in Figure \ref{fig:conds} reflect the occurrence of use of force cases under different four conditions (Lighting, Indoor/Outdoor, Weather, Location). In terms of location. we can see that the majority of use of force cases happened in the street and on sidewalks. Most cases happen outdoors rather than indoors. Daylight and good artificial light, both of which can provide a better vision (brighter conditions) outrace the lighting conditions that provided worse vision. (darker conditions) The weather condition is almost dominated by clear weather. We don't know if these conditions are independent. Intuitively, clear weather and (daylight + good artificial) both imply better ability to see, while (sidewalk + street) and outdoor both imply a broader space. Further PCA (principal component analysis) might have us draw a better conclusion on this. What's more, race seems independent to the effect of these environmental factors.
+
+
+
+\subsection{Cross Race Use of Force}
+
+In this section, we created a bubble plot depicting the different combinations of officer race and subject race for police use of force cases.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.38]{image3.png}
+\caption{Bubble plot depicting cross-race use of force cases. Each bubble contains the officer race (at the top) and the subject race (capitalized, at the bottom). The size of the bubble shows a visualization of count of use force cases. The plot filtered out cases where officer race is Null. Furthermore, the plot only kept the top 29 most common combinations.}
+\label{fig:crossrace}
+\end{figure}
+
+
+By looking at Figure \ref{fig:crossrace}, we can see that top three cross race combinations are white officer to black subject, black officer to black subject, and hispanic officer to black subject. Surprisingly and unexpectedly, we found that black officer to black subject is one of the top three combinations. This leads us to consider the case of discrimination happening in the same race. Alternatively, this phenomenon may be explained by the fact that black subjects have the higher crime rates, so the occurrence of this situation is solely reflecting the portion of each race of officers in the population of officers.
+
+
+
+\subsection{Barchart Comparing Use of Force Cases on each Race and Percentage of Population for each Race}
+
+In this section, we plot a barchart of the percentage of the population of each race compared the total population. We also plot a barchart of the percentage of subjects of each race in police use of force cases compared to the total use of force subjects. We combined these two into a single barchart, making it easy to visualize the percentage comparisons.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.4]{image5.png}
+\caption{Barcharts of (1) the percentage of the population of each race compared to the total population and (2) the percentage of use of force cases on subjects of each race compared to total use of force cases. The orange bar represents the portion of race in the total population and the blue bar represents the portion of race in all subjects.}
+\label{fig:population}
+\end{figure}
+
+
+From Figure \ref{fig:population}, we can observe that Black, Hispanic, and White make up the majority of the population, and they have almost the same portion in the population but at the same time, Black subjects account for more than 70 percentage of all subjects, while hispanic and white each accounts for only about 10-15 percentage of subjects. This result brings us to the existence of racial discrimination among police officers. We still need to do some investigation on the crime rate of each race in reality before we can make a solid conclusion on the existence of racial discrimination.
+
+
 
 
 \section{Tableau Review}
