@@ -7,9 +7,10 @@ def to_int(d):
 def to_bool(df, colname):
     df[colname].replace('Yes', True, inplace=True)
     df[colname].replace('Y', True, inplace=True)
+    df[colname].replace('true', True, inplace=True)
     df[colname].replace('No', False, inplace=True)
     df[colname].replace('N', False, inplace=True)
-    df[colname] = df[colname].astype(bool)
+    df[colname].replace('false', False, inplace=True)
 
 def reconcile_race(df, colname):
     df[colname].replace('UNKNOWN', None, inplace=True)
