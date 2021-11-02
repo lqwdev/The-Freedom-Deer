@@ -145,3 +145,27 @@ def process_weapondischarge():
     to_bool(df, 'sight_used')
 
     return df
+
+
+def process_actionresponse():
+    conn = connect()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM trr_trr_actionresponse_refresh;")
+    df = pd.DataFrame(cursor.fetchall(), columns=[desc[0] for desc in cursor.description])
+    return df
+
+
+def process_charge():
+    conn = connect()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM trr_charge_refresh;")
+    df = pd.DataFrame(cursor.fetchall(), columns=[desc[0] for desc in cursor.description])
+    return df
+
+
+def process_subjectweapon():
+    conn = connect()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM trr_subjectweapon_refresh;")
+    df = pd.DataFrame(cursor.fetchall(), columns=[desc[0] for desc in cursor.description])
+    return df
