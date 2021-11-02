@@ -55,7 +55,8 @@ def process_trr():
     df['officer_first_name'] = df['officer_first_name'].str.title()
     # capitalize last name
     df['officer_last_name'] = df['officer_last_name'].str.title()
-    # TODO remove suffix from last name
+    # remove suffix from last name
+    remove_suffix(df, 'officer_last_name')
 
     # cleanup subject gender
     df['subject_gender'].replace('MALE', 'M', inplace=True)
@@ -125,7 +126,8 @@ def process_trrstatus():
 
     df['officer_first_name'] = df['officer_first_name'].str.title()
     df['officer_last_name'] = df['officer_last_name'].str.title()
-    # TODO remove suffix
+    # remove suffix from last name
+    remove_suffix(df, 'officer_last_name')
 
     # reconcile officer races
     reconcile_race(df, 'officer_race')

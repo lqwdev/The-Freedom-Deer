@@ -27,3 +27,7 @@ def reconcile_subject_birth_year(year):
     elif year > 0 and year <= 5:
         return 2000 + year
     return year
+
+def remove_suffix(df, colname):
+    suffixes = set([suffix.capitalize() for suffix in ['I','II','III','IV','V','JR','SR','JR.']])
+    df[colname] = df[colname].apply(lambda name: ' '.join([e for e in name.split(' ') if e not in suffixes]))
