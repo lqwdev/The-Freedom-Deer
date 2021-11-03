@@ -1,23 +1,10 @@
-import psycopg2
 import pandas as pd
 from utils import *
-
-
-def connect():
-    return psycopg2.connect(
-        host = "codd04.research.northwestern.edu",
-        database = "postgres",
-        user = "cpdbstudent",
-        password = "DataSci4AI",
-        port = 5433
-    )
+import database
 
 
 def process_trr():
-    conn = connect()
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM trr_trr_refresh;")
-    df = pd.DataFrame(cursor.fetchall(), columns=[desc[0] for desc in cursor.description])
+    df = database.download('trr_trr_refresh')
 
     # convert columns to integers
     df['beat'] = to_int(df['beat'])
@@ -110,11 +97,9 @@ def process_trr():
 
 
 def process_trrstatus():
-    conn = connect()
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM trr_trrstatus_refresh;")
-    df = pd.DataFrame(cursor.fetchall(), columns=[desc[0] for desc in cursor.description])
+    df = database.download('trr_trrstatus_refresh')
 
+    # convert officer birth year to int
     df['officer_birth_year'] = to_int(df['officer_birth_year'])
 
     # convert to datetime
@@ -136,36 +121,7 @@ def process_trrstatus():
 
 
 def process_weapondischarge():
-    conn = connect()
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM trr_weapondischarge_refresh;")
-    df = pd.DataFrame(cursor.fetchall(), columns=[desc[0] for desc in cursor.description])
-
+    df = database.download('trr_weapondischarge_refresh')
     to_bool(df, 'firearm_reloaded')
     to_bool(df, 'sight_used')
-
-    return df
-
-
-def process_actionresponse():
-    conn = connect()
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM trr_trr_actionresponse_refresh;")
-    df = pd.DataFrame(cursor.fetchall(), columns=[desc[0] for desc in cursor.description])
-    return df
-
-
-def process_charge():
-    conn = connect()
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM trr_charge_refresh;")
-    df = pd.DataFrame(cursor.fetchall(), columns=[desc[0] for desc in cursor.description])
-    return df
-
-
-def process_subjectweapon():
-    conn = connect()
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM trr_subjectweapon_refresh;")
-    df = pd.DataFrame(cursor.fetchall(), columns=[desc[0] for desc in cursor.description])
     return df
