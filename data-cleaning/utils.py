@@ -43,3 +43,8 @@ def process_suffix(df, namecol, suffixcol):
     df[suffixcol] = suffixes
     df[suffixcol] = df[suffixcol].str.upper()
     df[suffixcol].replace('JR.', 'JR', inplace=True)
+
+def process_timestamp(df, colname):
+    df[colname] = pd.to_datetime(df[colname], utc=True) \
+        .dt.tz_convert('US/Central') \
+        .dt.strftime('%Y-%m-%d %I:%M:%S %p')

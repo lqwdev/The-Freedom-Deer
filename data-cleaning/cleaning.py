@@ -30,13 +30,15 @@ def process_trr():
     reconcile_race(df, 'officer_race')
 
     # convert to datetime
-    df['trr_datetime'] = pd.to_datetime(df['trr_datetime'])
-    df['trr_created'] = pd.to_datetime(df['trr_created'])
+    process_timestamp(df, 'trr_datetime')
+    process_timestamp(df, 'trr_created')
 
     # remove redacted
     df['officer_appointed_date'].replace('REDACTED', None, inplace=True)
     # convert to dates
     df['officer_appointed_date'] = pd.to_datetime(df['officer_appointed_date'])
+    # convert back to string
+    df['officer_appointed_date'] = df['officer_appointed_date'].dt.strftime('%Y-%m-%d')
 
     # capitalize first name
     df['officer_first_name'] = df['officer_first_name'].str.title()
