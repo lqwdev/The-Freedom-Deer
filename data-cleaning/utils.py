@@ -28,6 +28,18 @@ def reconcile_subject_birth_year(year):
         return 2000 + year
     return year
 
-def remove_suffix(df, colname):
-    suffixes = set([suffix.capitalize() for suffix in ['I','II','III','IV','V','JR','SR','JR.']])
-    df[colname] = df[colname].apply(lambda name: ' '.join([e for e in name.split(' ') if e not in suffixes]))
+def process_suffix(df, namecol, suffixcol):
+    valid = set([
+        suffix.capitalize() 
+        for suffix in ['I','II','III','IV','V','JR','SR','JR.']
+    ])
+    names, suffixes = [], []
+    for n in df[namecol]:
+        splitname = n.split(' ')
+        names.append(' '.join([e for e in splitname if e not in valid]))
+        sf = [e for e in splitname if e in valid]
+        suffixes.append(' '.join(sf) if len(sf) > 0 else None)
+    df[namecol] = names
+    df[suffixcol] = suffixes
+    df[suffixcol] = df[suffixcol].str.upper()
+    df[suffixcol].replace('JR.', 'JR', inplace=True)

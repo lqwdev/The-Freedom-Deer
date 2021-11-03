@@ -42,8 +42,8 @@ def process_trr():
     df['officer_first_name'] = df['officer_first_name'].str.title()
     # capitalize last name
     df['officer_last_name'] = df['officer_last_name'].str.title()
-    # remove suffix from last name
-    remove_suffix(df, 'officer_last_name')
+    # extract suffix from last name
+    process_suffix(df, 'officer_last_name', 'officer_suffix_name')
 
     # cleanup subject gender
     df['subject_gender'].replace('MALE', 'M', inplace=True)
