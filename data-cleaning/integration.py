@@ -158,6 +158,45 @@ def integrate():
     }
     results = results.rename(columns=rename_map)
 
+    # add the remaining rows
+    remaining = trr[~trr['id'].isin(set(results['id']))]
+    remaining['officer_id'] = 'NULL'
+    remaining = remaining.rename(columns=rename_map)
+    remaining = remaining[(results.columns)]
+    results = pd.concat([results, remaining])
+
+    # join with policeunit
+    policeunit = database.download('data_policeunit')
+    policeunit['unit_name'] = pd.to_numeric(policeunit['unit_name']).apply(str)
+
+    # replace redacted
+    results['officer_unit_name'].replace('REDACTED', None, inplace=True)
+
+    # join with policeunit
+    joined = pd.merge(
+        results,
+        policeunit,
+        left_on=['officer_unit_name'],
+        right_on=['unit_name'],
+        how='left',
+        suffixes=['', '_policeunit']
+    )
+
+    # rename columns
+    joined = joined.rename(columns={
+        'id_policeunit': 'officer_unit_id',
+        'unit_name': 'officer_unit_detail_id',
+    })
+
+    results = clean_cols(joined)
+
+    # convert to int
+    results['officer_unit_detail_id'] = pd.to_numeric(results['officer_unit_detail_id'])
+
+    return results
+
+
+def clean_cols(results):
     final_columns = [
         'id',
         'crid',
@@ -188,17 +227,12 @@ def integrate():
         'subject_birth_year',
         'subject_gender',
         'subject_race',
-        'point',
         'officer_id',
+        'officer_unit_id',
+        'officer_unit_detail_id',
+        'point',
     ]
 
     results = results[final_columns]
-
-    # add the remaining rows
-    remaining = trr[~trr['id'].isin(set(results['id']))]
-    remaining['officer_id'] = 'NULL'
-    remaining = remaining.rename(columns=rename_map)
-    remaining = remaining[final_columns]
-    results = pd.concat([results, remaining])
     
     return results
