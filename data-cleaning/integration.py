@@ -147,7 +147,7 @@ def integrate():
     results = pd.concat([results, matched[result_cols]])
 
     # rename columns
-    results = results.rename(columns={
+    rename_map = {
         "id_trr": "id",
         "id_officer": "officer_id",
         "event_number": "event_id",
@@ -155,7 +155,8 @@ def integrate():
         "notify_oemc": "notify_OEMC",
         "notify_op_command": "notify_OP_command",
         "notify_det_division": "notify_DET_division",
-    })
+    }
+    results = results.rename(columns=rename_map)
 
     final_columns = [
         'id',
@@ -192,5 +193,12 @@ def integrate():
     ]
 
     results = results[final_columns]
+
+    # add the remaining rows
+    remaining = trr[~trr['id'].isin(set(results['id']))]
+    remaining['officer_id'] = 'NULL'
+    remaining = remaining.rename(columns=rename_map)
+    remaining = remaining[final_columns]
+    results = pd.concat([results, remaining])
     
     return results

@@ -105,11 +105,13 @@ def process_trrstatus():
     df['officer_birth_year'] = to_int(df['officer_birth_year'])
 
     # convert to datetime
-    df['status_datetime'] = pd.to_datetime(df['status_datetime'])
+    process_timestamp(df, 'status_datetime')
     # remove redacted
     df['officer_appointed_date'].replace('REDACTED', None, inplace=True)
     # convert to dates
     df['officer_appointed_date'] = pd.to_datetime(df['officer_appointed_date'])
+    # convert back to string
+    df['officer_appointed_date'] = df['officer_appointed_date'].dt.strftime('%Y-%m-%d')
 
     df['officer_first_name'] = df['officer_first_name'].str.title()
     df['officer_last_name'] = df['officer_last_name'].str.title()
