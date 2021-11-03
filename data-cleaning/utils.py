@@ -23,7 +23,7 @@ def reconcile_race(df, colname):
 
 def reconcile_subject_birth_year(year):
     if year > 5 and year < 100:
-        return 1000 + year
+        return 1900 + year
     elif year > 0 and year <= 5:
         return 2000 + year
     return year
