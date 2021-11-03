@@ -113,8 +113,8 @@ def process_trrstatus():
 
     df['officer_first_name'] = df['officer_first_name'].str.title()
     df['officer_last_name'] = df['officer_last_name'].str.title()
-    # remove suffix from last name
-    remove_suffix(df, 'officer_last_name')
+    # extract suffix from last name
+    process_suffix(df, 'officer_last_name', 'officer_suffix_name')
 
     # reconcile officer races
     reconcile_race(df, 'officer_race')
