@@ -1,0 +1,21 @@
+# Requirements
+
+Our script runs on Python 3 and uses the following libraries that
+may need to be installed before it can run.
+
+All of these requirements can be installed using pip.
+
+* pandas
+* numpy
+* sqlite3
+* psycopg2
+  * Requires an installation of postgresql
+
+
+# How to run our data cleaning pipeline
+
+Our script is packaged under `run.py` and is easy to run:
+
+```
+python3 run.py
+```
