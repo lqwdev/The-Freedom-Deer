@@ -21,4 +21,4 @@ python3 src/run.py
 ```
 
 Please note that you MUST run this command from the root
-directory, not from the `src/` directory.
+directory, not from the `src/` (the current) directory.
