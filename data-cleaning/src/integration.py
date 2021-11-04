@@ -190,8 +190,8 @@ def integrate_trr():
     # rename columns
     joined = joined.rename(columns={
         'id_policeunit': 'officer_unit_id',
-        'unit_name': 'officer_unit_detail_id',
     })
+    joined['officer_unit_detail_id'] = joined['officer_unit_id']
 
     final_columns = [
         'id',
@@ -229,9 +229,6 @@ def integrate_trr():
         'point',
     ]
     results = joined[final_columns]
-
-    # convert to int
-    results['officer_unit_detail_id'] = pd.to_numeric(results['officer_unit_detail_id'])
 
     return results
 
