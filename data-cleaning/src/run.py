@@ -39,33 +39,30 @@ def main():
     subjectweapon = subjectweapon[subjectweapon['trr_id'].isin(trr_ids)]
     print('Finished processing trr_subjectweapon_refresh')
 
-    # replace NULLs with empty string
-    trr.replace('NULL', '', inplace=True)
-    trr.fillna('', inplace=True)
-    trrstatus.replace('NULL', '', inplace=True)
-    trrstatus.fillna('', inplace=True)
-    weapondischarge.replace('NULL', '', inplace=True)
-    weapondischarge.fillna('', inplace=True)
-    actionresponse.replace('NULL', '', inplace=True)
-    actionresponse.fillna('', inplace=True)
-    charge.replace('NULL', '', inplace=True)
-    charge.fillna('', inplace=True)
-    subjectweapon.replace('NULL', '', inplace=True)
-    subjectweapon.fillna('', inplace=True)
-
     # create directory for output
     os.makedirs('output/', exist_ok=True)
 
     # write all dataframes to csv
-    trr.to_csv('output/trr-trr.csv', index=False, quoting=csv.QUOTE_NONNUMERIC)
-    trrstatus.to_csv('output/trr-trrstatus.csv', index=False, quoting=csv.QUOTE_NONNUMERIC)
-    weapondischarge.to_csv('output/trr-weapondischarge.csv', index=False, quoting=csv.QUOTE_NONNUMERIC)
-    actionresponse.to_csv('output/trr-actionresponse.csv', index=False, quoting=csv.QUOTE_NONNUMERIC)
-    charge.to_csv('output/trr-charge.csv', index=False, quoting=csv.QUOTE_NONNUMERIC)
-    subjectweapon.to_csv('output/trr-subjectweapon.csv', index=False, quoting=csv.QUOTE_NONNUMERIC)
+    output(trr, 'output/trr-trr.csv')
+    output(trrstatus, 'output/trr-trrstatus.csv')
+    output(weapondischarge, 'output/trr-weapondischarge.csv')
+    output(actionresponse, 'output/trr-actionresponse.csv')
+    output(charge, 'output/trr-charge.csv')
+    output(subjectweapon, 'output/trr-subjectweapon.csv')
 
     print('END')
 
+
+def output(df, filename):
+    df.to_csv(filename, index=False, quoting=csv.QUOTE_NONNUMERIC, na_rep='NULL')
+    replace_nulls(filename)
+
+
+def replace_nulls(filename):
+    with open(filename) as f:
+        replaced = f.read().replace('"NULL"', '')
+    with open(filename, "w") as f:
+        f.write(replaced)
 
 
 if __name__ == "__main__":
