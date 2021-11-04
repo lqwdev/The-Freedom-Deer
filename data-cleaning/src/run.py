@@ -1,6 +1,7 @@
 import cleaning
 import integration
 import os
+import csv
 
 
 def main():
@@ -56,12 +57,12 @@ def main():
     os.makedirs('output/', exist_ok=True)
 
     # write all dataframes to csv
-    trr.to_csv('output/trr-trr.csv', index=False)
-    trrstatus.to_csv('output/trr-trrstatus.csv', index=False)
-    weapondischarge.to_csv('output/trr-weapondischarge.csv', index=False)
-    actionresponse.to_csv('output/trr-actionresponse.csv', index=False)
-    charge.to_csv('output/trr-charge.csv', index=False)
-    subjectweapon.to_csv('output/trr-subjectweapon.csv', index=False)
+    trr.to_csv('output/trr-trr.csv', index=False, quoting=csv.QUOTE_NONNUMERIC)
+    trrstatus.to_csv('output/trr-trrstatus.csv', index=False, quoting=csv.QUOTE_NONNUMERIC)
+    weapondischarge.to_csv('output/trr-weapondischarge.csv', index=False, quoting=csv.QUOTE_NONNUMERIC)
+    actionresponse.to_csv('output/trr-actionresponse.csv', index=False, quoting=csv.QUOTE_NONNUMERIC)
+    charge.to_csv('output/trr-charge.csv', index=False, quoting=csv.QUOTE_NONNUMERIC)
+    subjectweapon.to_csv('output/trr-subjectweapon.csv', index=False, quoting=csv.QUOTE_NONNUMERIC)
 
     print('END')
 
