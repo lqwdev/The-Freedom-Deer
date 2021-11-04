@@ -173,9 +173,14 @@ def integrate_trr():
     # join with policeunit
     policeunit = database.download('data_policeunit')
     policeunit['unit_name'] = pd.to_numeric(policeunit['unit_name']).apply(str)
+    policeunit['unit_name'].fillna('NULL', inplace=True)
 
     # replace redacted
     results['officer_unit_name'].replace('REDACTED', None, inplace=True)
+    results['officer_unit_detail'].replace('REDACTED', None, inplace=True)
+    # fill na with NULL
+    results['officer_unit_name'].fillna('NULL', inplace=True)
+    results['officer_unit_detail'].fillna('NULL', inplace=True)
 
     # join with policeunit
     joined = pd.merge(
@@ -187,11 +192,23 @@ def integrate_trr():
         suffixes=['', '_policeunit']
     )
 
-    # rename columns
-    joined = joined.rename(columns={
-        'id_policeunit': 'officer_unit_id',
-    })
-    joined['officer_unit_detail_id'] = joined['officer_unit_id']
+    joined['id_policeunit'] = joined['id_policeunit'].astype("Int64")
+    # officer_unit_name -> officer_unit_id
+    joined = joined.rename(columns={'id_policeunit': 'officer_unit_id'})
+
+    # join again with police unit for detail id
+    joined = pd.merge(
+        joined,
+        policeunit,
+        left_on=['officer_unit_detail'],
+        right_on=['unit_name'],
+        how='left',
+        suffixes=['', '_policeunit']
+    )
+
+    joined['id_policeunit'] = joined['id_policeunit'].astype("Int64")
+    # officer_unit_detail -> officer_unit_detail_id
+    joined = joined.rename(columns={'id_policeunit': 'officer_unit_detail_id'})
 
     final_columns = [
         'id',
@@ -228,6 +245,7 @@ def integrate_trr():
         'officer_unit_detail_id',
         'point',
     ]
+
     results = joined[final_columns]
 
     return results
