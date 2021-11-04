@@ -249,6 +249,9 @@ def integrate_trr_status():
     trrstatus = cleaning.process_trrstatus()
     officers = get_officers()
 
+    # insert an id field to remove duplicates
+    trrstatus.insert(0, 'trrstatus_id', range(len(trrstatus)))
+
     officer_cols = [
         'appointed_date',
         'first_name',
@@ -299,12 +302,12 @@ def integrate_trr_status():
         suffixes=['_officer', '_trr']
     )
     # remove duplicates
-    results = results.drop_duplicates(subset=trr_officer_cols + ['trr_report_id', 'status_datetime'])
+    results = results.drop_duplicates(subset=['trrstatus_id'])
 
     # compute remaining
     remaining = pd.concat([tmp_trrstatus, results]).drop_duplicates(
         keep = False,
-        subset=trr_officer_cols + ['trr_report_id', 'status_datetime']
+        subset=['trrstatus_id'],
     )
     remaining = remaining[list(tmp_trrstatus.columns)]
 
@@ -322,14 +325,14 @@ def integrate_trr_status():
         )
         # remove duplicates
         res = res.drop_duplicates(
-            subset=trr_cols + ['trr_report_id', 'status_datetime']
+            subset=['trrstatus_id']
         )
         # add to results
         results = pd.concat([results, res])
         # compute remaining
         remaining = pd.concat([remaining, res]).drop_duplicates(
             keep = False,
-            subset=trr_cols + ['trr_report_id', 'status_datetime']
+            subset=['trrstatus_id'],
         )
         remaining = remaining[list(tmp_trrstatus.columns)]
 
@@ -346,19 +349,14 @@ def integrate_trr_status():
 
     temp_remaining = pd.concat([remaining, temp_results]).drop_duplicates(
         keep = False,
-        subset=trr_officer_cols + ['trr_report_id', 'status_datetime']
+        subset=['trrstatus_id']
     )
     temp_remaining = temp_remaining[list(tmp_trrstatus.columns)]
-
-    results = pd.concat([results, temp_results])
 
     # rewrite the db
     conn = sqlite3.connect(":memory:")
     tmp_officers[officer_cols + ['id']].to_sql("tmp_officers", conn, index=False)
     temp_remaining.to_sql("remaining", conn, index=False)
-
-    # clear container
-    temp_results = temp_results.iloc[0:0]
 
     # loose match on 7/8 columns
     for k in range(len(officer_cols)):
@@ -367,26 +365,22 @@ def integrate_trr_status():
         # generate query by removing 1 column at a time
         query = generate_sql_query_for_trrstatus(tmp_off_cols, tmp_trr_cols)
         res = pd.read_sql_query(query, conn)
-        # remove duplicates
-        res = res.drop_duplicates(
-            subset=tmp_trr_cols + ['trr_report_id', 'status_datetime']
-        )
         # update temp_results with newly matched results
         temp_results = pd.concat([temp_results, res])
         # reset remaining trr
         temp_remaining = pd.concat([temp_remaining, temp_results]).drop_duplicates(
             keep = False,
-            subset=trr_officer_cols + ['trr_report_id', 'status_datetime']
+            subset=['trrstatus_id'],
         )
         temp_remaining = temp_remaining[list(tmp_trrstatus.columns)]
-        
+
         # rewrite db
         conn = sqlite3.connect(":memory:")
         tmp_officers[officer_cols + ['id']].to_sql("tmp_officers", conn, index=False)
         temp_remaining.to_sql("remaining", conn, index=False)
 
     results = pd.concat([results, temp_results])
-    final_cols = ['officer_rank', 'officer_star', 'status', 'status_datetime', 'id', 'trr_report_id']
+    final_cols = ['trrstatus_id', 'officer_rank', 'officer_star', 'status', 'status_datetime', 'id', 'trr_report_id']
     results = results[final_cols]
     results = results.rename(columns={
         'officer_rank': 'rank',
@@ -395,4 +389,15 @@ def integrate_trr_status():
         'trr_report_id': 'trr_id',
     })
 
-    return results
+    remaining = pd.concat([tmp_trrstatus, results]).drop_duplicates(
+        keep = False,
+        subset=['trrstatus_id'],
+    )
+    remaining['officer_id'] = remaining['officer_id'].fillna('')
+
+    # full final results
+    final = pd.concat([results, remaining])
+    cols = ['rank', 'star', 'status', 'status_datetime', 'officer_id', 'trr_id']
+    final = final[cols]
+
+    return final
