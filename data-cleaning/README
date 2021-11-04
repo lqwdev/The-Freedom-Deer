@@ -17,5 +17,8 @@ All of these requirements can be installed using pip.
 Our script is packaged under `run.py` and is easy to run:
 
 ```
-python3 run.py
+python3 src/run.py
 ```
+
+Please note that you MUST run this command from the root
+directory, not from the `src/` directory.
