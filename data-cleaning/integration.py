@@ -40,7 +40,7 @@ def get_officers():
     return officers
 
 
-def integrate():
+def integrate_trr():
     trr = cleaning.process_trr()
     officers = get_officers()
 
@@ -386,13 +386,13 @@ def integrate_trr_status():
         temp_remaining.to_sql("remaining", conn, index=False)
 
     results = pd.concat([results, temp_results])
+    final_cols = ['officer_rank', 'officer_star', 'status', 'status_datetime', 'id', 'trr_report_id']
+    results = results[final_cols]
     results = results.rename(columns={
         'officer_rank': 'rank',
         'officer_star': 'star',
         'id': 'officer_id',
         'trr_report_id': 'trr_id',
     })
-    final_cols = ['rank', 'star', 'status', 'status_datetime', 'officer_id', 'trr_id']
-    results = results[final_cols]
 
     return results

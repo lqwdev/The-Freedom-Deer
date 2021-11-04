@@ -5,12 +5,12 @@ def to_int(d):
     return pd.to_numeric(d, errors='coerce').astype('Int64').replace({np.nan: None})
 
 def to_bool(df, colname):
-    df[colname].replace('Yes', True, inplace=True)
-    df[colname].replace('Y', True, inplace=True)
-    df[colname].replace('true', True, inplace=True)
-    df[colname].replace('No', False, inplace=True)
-    df[colname].replace('N', False, inplace=True)
-    df[colname].replace('false', False, inplace=True)
+    df[colname].replace('Yes', 1, inplace=True)
+    df[colname].replace('Y', 1, inplace=True)
+    df[colname].replace('true', 1, inplace=True)
+    df[colname].replace('No', 0, inplace=True)
+    df[colname].replace('N', 0, inplace=True)
+    df[colname].replace('false', 0, inplace=True)
 
 def reconcile_race(df, colname):
     df[colname].replace('UNKNOWN', None, inplace=True)

@@ -128,4 +128,52 @@ def process_weapondischarge():
     df = database.download('trr_weapondischarge_refresh')
     to_bool(df, 'firearm_reloaded')
     to_bool(df, 'sight_used')
+
+    df = df.rename(columns={'trr_report_id': 'trr_id'})
+    cols = [
+        'weapon_type',
+        'weapon_type_description',
+        'firearm_make',
+        'firearm_model',
+        'firearm_barrel_length',
+        'firearm_caliber',
+        'total_number_of_shots',
+        'firearm_reloaded',
+        'number_of_cartridge_reloaded',
+        'handgun_worn_type',
+        'handgun_drawn_type',
+        'method_used_to_reload',
+        'sight_used',
+        'protective_cover_used',
+        'discharge_distance',
+        'object_struck_of_discharge',
+        'discharge_position',
+        'trr_id'
+    ]
+
+    df = df[cols]
+    return df
+
+
+def process_actionresponse():
+    df = database.download('trr_actionresponse_refresh')
+    df = df.rename(columns={'trr_report_id': 'trr_id'})
+    cols = ['person', 'resistance_type', 'action', 'other_description', 'trr_id']
+    df = df[cols]
+    return df
+
+
+def process_charge():
+    df = database.download('trr_charge_refresh')
+    df = df.rename(columns={'trr_report_id': 'trr_id'})
+    cols = ['statute', 'description', 'subject_no', 'trr_id']
+    df = df[cols]
+    return df
+
+
+def process_subjectweapon():
+    df = database.download('trr_subjectweapon_refresh')
+    df = df.rename(columns={'trr_report_id': 'trr_id'})
+    cols = ['weapon_type', 'firearm_caliber', 'weapon_description', 'trr_id']
+    df = df[cols]
     return df

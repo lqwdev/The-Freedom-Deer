@@ -422,3 +422,6 @@ dmypy.json
 cython_debug/
 
 .DS_Store
+
+# ignore output folder
+data-cleaning/output/
