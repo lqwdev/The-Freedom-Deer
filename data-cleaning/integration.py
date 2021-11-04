@@ -27,9 +27,22 @@ def generate_sql_query(off_cols, trr_cols):
     """
 
 
+def get_officers():
+    officers = database.download('data_officer')
+    # cleanup officers table
+    officers['birth_year'] = officers['birth_year'].astype('Int64').replace({np.nan: None})
+    officers['race'] = officers['race'].str.upper()
+    officers['race'].replace('UNKNOWN', None, inplace=True)
+    officers['race'].replace('ASIAN/PACIFIC', 'ASIAN/PACIFIC ISLANDER', inplace=True)
+    officers['appointed_date'] = officers['appointed_date'].apply(
+        lambda date: date.strftime('%Y-%m-%d') if date != None else None
+    )
+    return officers
+
+
 def integrate():
     trr = cleaning.process_trr()
-    officers = database.download('data_officer')
+    officers = get_officers()
 
     officer_cols = [
         'appointed_date',
@@ -53,14 +66,6 @@ def integrate():
     ]
     result_cols = list(trr.columns) + ['id_trr', 'id_officer']
     result_cols.remove('id')
-
-
-    # cleanup officers table
-    officers['birth_year'] = officers['birth_year'].astype('Int64').replace({np.nan: None})
-    officers['race'] = officers['race'].str.upper()
-    officers['race'].replace('UNKNOWN', None, inplace=True)
-    officers['race'].replace('ASIAN/PACIFIC', 'ASIAN/PACIFIC ISLANDER', inplace=True)
-    officers['appointed_date'] = officers['appointed_date'].apply(lambda date: date.strftime('%Y-%m-%d') if date != None else None)
 
     # convert to NULLs
     tmp_officers = officers.fillna('NULL')
@@ -188,15 +193,6 @@ def integrate():
         'unit_name': 'officer_unit_detail_id',
     })
 
-    results = clean_cols(joined)
-
-    # convert to int
-    results['officer_unit_detail_id'] = pd.to_numeric(results['officer_unit_detail_id'])
-
-    return results
-
-
-def clean_cols(results):
     final_columns = [
         'id',
         'crid',
@@ -232,7 +228,171 @@ def clean_cols(results):
         'officer_unit_detail_id',
         'point',
     ]
+    results = joined[final_columns]
 
-    results = results[final_columns]
-    
+    # convert to int
+    results['officer_unit_detail_id'] = pd.to_numeric(results['officer_unit_detail_id'])
+
+    return results
+
+
+def generate_sql_query_for_trrstatus(off_cols, trr_cols):
+    return f"""
+        SELECT *
+        FROM tmp_officers off, remaining trr
+        WHERE {generate_sql_conditions(off_cols, trr_cols)}
+        ;
+    """
+
+
+def integrate_trr_status():
+    trrstatus = cleaning.process_trrstatus()
+    officers = get_officers()
+
+    officer_cols = [
+        'appointed_date',
+        'first_name',
+        'middle_initial',
+        'last_name',
+        'gender',
+        'race',
+        'birth_year',
+        'suffix_name',
+    ]
+    trr_officer_cols = [
+        'officer_appointed_date',
+        'officer_first_name',
+        'officer_middle_initial',
+        'officer_last_name',
+        'officer_gender',
+        'officer_race',
+        'officer_birth_year',
+        'officer_suffix_name',
+    ]
+
+    # convert to NULLs
+    tmp_officers = officers.fillna('NULL')
+    tmp_trrstatus = trrstatus.fillna('NULL')
+    tmp_trrstatus = tmp_trrstatus.replace('REDACTED', 'NULL')
+    tmp_trrstatus = tmp_trrstatus.replace(' ', 'NULL')
+    tmp_trrstatus = tmp_trrstatus.drop_duplicates(subset=trr_officer_cols + ['trr_report_id', 'status_datetime'])
+
+    # drop useless columns
+    tmp_officers = tmp_officers.drop(columns=[
+        'resignation_date', 'complaint_percentile',
+        'middle_initial2', 'civilian_allegation_percentile',
+        'honorable_mention_percentile', 'internal_allegation_percentile',
+        'trr_percentile', 'allegation_count', 'sustained_count',
+        'civilian_compliment_count', 'current_badge', 'current_salary',
+        'discipline_count', 'honorable_mention_count', 'last_unit_id',
+        'major_award_count', 'trr_count', 'unsustained_count',
+        'has_unique_name', 'created_at', 'updated_at', 'tags'
+    ])
+
+    # start by performing a full inner join on all columns
+    results = pd.merge(
+        tmp_officers,
+        tmp_trrstatus,
+        left_on=officer_cols,
+        right_on=trr_officer_cols,
+        how='inner',
+        suffixes=['_officer', '_trr']
+    )
+    # remove duplicates
+    results = results.drop_duplicates(subset=trr_officer_cols + ['trr_report_id', 'status_datetime'])
+
+    # compute remaining
+    remaining = pd.concat([tmp_trrstatus, results]).drop_duplicates(
+        keep = False,
+        subset=trr_officer_cols + ['trr_report_id', 'status_datetime']
+    )
+    remaining = remaining[list(tmp_trrstatus.columns)]
+
+    # try removing 1 column at a time, join with officers and concat the results
+    for k in range(len(officer_cols)):
+        off_cols = officer_cols[:k] + officer_cols[k+1:]
+        trr_cols = trr_officer_cols[:k] + trr_officer_cols[k+1:]
+        res = pd.merge(
+            tmp_officers,
+            remaining,
+            left_on=off_cols,
+            right_on=trr_cols,
+            how='inner',
+            suffixes=['_officer', '_trr']
+        )
+        # remove duplicates
+        res = res.drop_duplicates(
+            subset=trr_cols + ['trr_report_id', 'status_datetime']
+        )
+        # add to results
+        results = pd.concat([results, res])
+        # compute remaining
+        remaining = pd.concat([remaining, res]).drop_duplicates(
+            keep = False,
+            subset=trr_cols + ['trr_report_id', 'status_datetime']
+        )
+        remaining = remaining[list(tmp_trrstatus.columns)]
+
+    # since pandas doesn't support conditional joins, we will do this by
+    # temporarily writing to a sqlite3 databsae and perform the sql queries
+    conn = sqlite3.connect(":memory:")
+
+    # store to sqlite3 database
+    tmp_officers[officer_cols + ['id']].to_sql("tmp_officers", conn, index=False)
+    remaining.to_sql("remaining", conn, index=False)
+
+    # perform a full join query on all conditions
+    temp_results = pd.read_sql_query(generate_sql_query_for_trrstatus(officer_cols, trr_officer_cols), conn)
+
+    temp_remaining = pd.concat([remaining, temp_results]).drop_duplicates(
+        keep = False,
+        subset=trr_officer_cols + ['trr_report_id', 'status_datetime']
+    )
+    temp_remaining = temp_remaining[list(tmp_trrstatus.columns)]
+
+    results = pd.concat([results, temp_results])
+
+    # rewrite the db
+    conn = sqlite3.connect(":memory:")
+    tmp_officers[officer_cols + ['id']].to_sql("tmp_officers", conn, index=False)
+    temp_remaining.to_sql("remaining", conn, index=False)
+
+    # clear container
+    temp_results = temp_results.iloc[0:0]
+
+    # loose match on 7/8 columns
+    for k in range(len(officer_cols)):
+        tmp_off_cols = officer_cols[:k] + officer_cols[k+1:]
+        tmp_trr_cols = trr_officer_cols[:k] + trr_officer_cols[k+1:]
+        # generate query by removing 1 column at a time
+        query = generate_sql_query_for_trrstatus(tmp_off_cols, tmp_trr_cols)
+        res = pd.read_sql_query(query, conn)
+        # remove duplicates
+        res = res.drop_duplicates(
+            subset=tmp_trr_cols + ['trr_report_id', 'status_datetime']
+        )
+        # update temp_results with newly matched results
+        temp_results = pd.concat([temp_results, res])
+        # reset remaining trr
+        temp_remaining = pd.concat([temp_remaining, temp_results]).drop_duplicates(
+            keep = False,
+            subset=trr_officer_cols + ['trr_report_id', 'status_datetime']
+        )
+        temp_remaining = temp_remaining[list(tmp_trrstatus.columns)]
+        
+        # rewrite db
+        conn = sqlite3.connect(":memory:")
+        tmp_officers[officer_cols + ['id']].to_sql("tmp_officers", conn, index=False)
+        temp_remaining.to_sql("remaining", conn, index=False)
+
+    results = pd.concat([results, temp_results])
+    results = results.rename(columns={
+        'officer_rank': 'rank',
+        'officer_star': 'star',
+        'id': 'officer_id',
+        'trr_report_id': 'trr_id',
+    })
+    final_cols = ['rank', 'star', 'status', 'status_datetime', 'officer_id', 'trr_id']
+    results = results[final_cols]
+
     return results
