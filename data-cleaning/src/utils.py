@@ -24,8 +24,20 @@ def reconcile_race(df, colname):
 def reconcile_subject_birth_year(year):
     if year > 5 and year < 100:
         return 1900 + year
-    elif year > 0 and year <= 5:
+    if year > 0 and year <= 5:
         return 2000 + year
+
+    if year == 198:
+        return 1998
+    if year == 1080:
+        return 1980
+    if year == 1088:
+        return 1988
+    if year == 1093:
+        return 1993
+    if year == 1194:
+        return 1994
+
     return year
 
 def process_suffix(df, namecol, suffixcol):
