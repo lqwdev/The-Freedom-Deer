@@ -10,4 +10,3 @@ Here and in the `findings` report, we link to the D3 Visualization notebook, whe
 **1. Bubble chart view of cross race situation in period of 2004-2006, 2007-2009, 2010-2012, 2013-2016.**
 - **Visualization:**  https://observablehq.com/@c69ef2da2b4d284b/bubble-plot-of-cross-race
 - **Script:** `bubble_chart.sql`
-- **Data:** `Cross_Race_all.csv` `Cross_Race2004-2006.csv` `Cross_Race2007-2009.csv` `Cross_Race2010-2012.csv` `Cross_Race2013-2016.csv`
