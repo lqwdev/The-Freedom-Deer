@@ -1,0 +1,140 @@
+{
+    "name": "officer",
+    "children": [
+        {
+            "name": "White",
+            "children": [
+                {
+                    "name": "middle-aged",
+                    "children": [
+                        {
+                            "name": "M",
+                            "children": [
+                                {
+                                    "name": "APPROVED",
+                                    "value": 34141
+                                },
+                                {
+                                    "name": "SUBMITTED",
+                                    "value": 7056
+                                },
+                                {
+                                    "name": "REVIEWED",
+                                    "value": 24915
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "young adult",
+                    "children": [
+                        {
+                            "name": "M",
+                            "children": [
+                                {
+                                    "name": "APPROVED",
+                                    "value": 468
+                                },
+                                {
+                                    "name": "SUBMITTED",
+                                    "value": 24889
+                                },
+                                {
+                                    "name": "REVIEWED",
+                                    "value": 8351
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Hispanic",
+            "children": [
+                {
+                    "name": "middle-aged",
+                    "children": [
+                        {
+                            "name": "M",
+                            "children": [
+                                {
+                                    "name": "APPROVED",
+                                    "value": 11648
+                                },
+                                {
+                                    "name": "SUBMITTED",
+                                    "value": 1429
+                                },
+                                {
+                                    "name": "REVIEWED",
+                                    "value": 7974
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "young adult",
+                    "children": [
+                        {
+                            "name": "M",
+                            "children": [
+                                {
+                                    "name": "SUBMITTED",
+                                    "value": 9774
+                                },
+                                {
+                                    "name": "REVIEWED",
+                                    "value": 2808
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Black",
+            "children": [
+                {
+                    "name": "middle-aged",
+                    "children": [
+                        {
+                            "name": "M",
+                            "children": [
+                                {
+                                    "name": "APPROVED",
+                                    "value": 4601
+                                },
+                                {
+                                    "name": "SUBMITTED",
+                                    "value": 422
+                                },
+                                {
+                                    "name": "REVIEWED",
+                                    "value": 2616
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "young adult",
+                    "children": [
+                        {
+                            "name": "M",
+                            "children": [
+                                {
+                                    "name": "SUBMITTED",
+                                    "value": 833
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
