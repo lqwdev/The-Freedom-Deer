@@ -1,6 +1,6 @@
 # Checkpoint 3: Interactive Visualization
 
-Our group produced an interactive bubble char visualization.
+Our group produced an interactive bubble chart, Bar chart, and Sequence Sunburst visualization.
 Here and in the `findings` report, we link to the D3 Visualization notebook, where you can see the visualization and the code. We also identify the sql file containing the SQL queries used to get the data and the csv file containing the data.  
 
 `src` contains the SQL scripts to obtain the csv data for each question.
