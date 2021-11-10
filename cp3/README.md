@@ -15,4 +15,4 @@ Here and in the `findings` report, we link to the D3 Visualization notebook, whe
 
 **3. Sequence Sunburst Portraiting the Demographics of the Parties Involved in Use of Force.**
 - **Visualization:**  https://observablehq.com/@ltcrazy/sequence-sunburst-portraiting-the-demographics-of-the-2-pa
-- **Script:** `Sunburst_subject.sql` `Sunburst_officer.sql`
+- **Script:** `\processing\Sunburst_subject.sql` `\processingSunburst_officer.sql` `\processing\officer.ipynb`
