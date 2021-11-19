@@ -36,10 +36,11 @@
 \maketitle
 
 
-The main goal of our network analytics is to identify whether there is a network of police officers that co-offend together. We would like to also explore whether this network of officers are on the same shift together. Furthermore we want to identify police officers that are ``bad influences" to other officers. The main graph algorithms we use are triangle counting and PageRank.
+The main goal of our network analytics is to identify whether there is a network of police officers that co-offend together. We would like to also explore whether this network of officers are on the same shift together. Furthermore we want to identify police officers that are ``bad influences" to other officers. We would also like to explore whether the graphs for cross-race use of force TRR cases are different.
 
 We implemented our graph analytics modeling questions using GraphFrames and Apache Spark. We pulled our data from the CPDB Postgres server and performed post-processing using Python in a Jupyter Notebook environment. 
 
+The main graph algorithms we use in this analysis are triangle counts and PageRank.
 
 
 \section{Analysis of Co-offending Network Graphs}
@@ -116,6 +117,39 @@ To investigate this, we extracted the top 200 ``bad guys" (defined by the office
 \end{figure}
 
 From Figure \ref{offshift}, we found that, ordering by ``ratio", there are many of them with off-shift TRR. However, the officers with the lowest ratio are those with fewer TRR cases. Most of these officers have a ratio over 0.9, which means off-shift TRR is not quite relevant to active use of force. This disagrees with our original hypothesis. Therefore, a taken-away message could be it’s not going to be very helpful for regulating use of force by monitoring officers' off-shift TRR.
+
+
+
+
+\section{Exploration of the Influence of Officers in the Top Triangles Count Chart}
+
+Given the chart of the top 200 ``bad guys", we want to find a way to quantify their influence on other officers. We have not validated this quantification yet, but the following is the process of our exploration.
+
+We hypothesize that when two ``bad guys" went on assignments together a lot while involved in the same TRR cases a little, the occurrence of use of force could be explained as a coincidence. Thus, the ratio of the number of co-TRR cases over the number of on-shift represent the likelihood that these two officers have preference to involve in TRR cases together. Under this situation, if one officer is a “bad guy” (as defined above) while the other is not, the other officer was misled by the bad officer.
+
+During the process of querying the number of co-TRR cases/the number of on-shift officers that involve those 200 ``bad guys", we meet our first challenge that there are only 39 officers of the 200 officers who have the record of assignment shift. We rule out the officers that have already appeared in the 200 bad guys and come up with a table of shift vs TRR count of 39 bad guys with officers that do not belong to the 200 bad guys. We put them in the \texttt{src/count\_shift.csv}. From Figure \ref{shiftcount}, we see that among all the officers that have assignments on record, we found out that officer 2110 has the most connection with other officers that do not belong to the 200 bad guys (refer to \texttt{src/top\_influence.csv}).
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.35\textwidth]{shiftcount}
+\caption{Table of officers with greatest influence on other officers that are not ranked in the top 200 officers with the worst influence.}
+\label{shiftcount}
+\end{figure}
+
+And we quantify the influence of officer 2110 by the ratio mentioned above, we got the follow chart in Figure \ref{2110inf} (refer to \texttt{src/officer2110\_influence.csv})
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{2110inf}
+\caption{Table describing the influence of police officer 2110 with measures such as TRR count, shifts worked, and the ratio between TRR count and shifts worked.}
+\label{2110inf}
+\end{figure}
+
+We can see that officer 25291 (not belonging to the top 200 bad guys) has only 4 assignments with officer 2110, however, they have been involved in the same trr event three times.
+
+Since we have only ruled out officers from top 200 bad guys, we do not know if officer 25291 is ranked 201 or 5000+ in the ranking of ``bad guys". If officer 25291 turns out to have low rank in the ranking of ``bad guys", officer 2110 have seriously bad influence on officer 25291 on the habit of use of force.
+
+Restricted by time and the underestimation of the complexity of this quantification, this is what we got so far. It would be a good follow up to validate this quantification and use it to test the adverse influence of ``bad apples" in the future. If this quantification can be validated, we could calculate the influence score (maybe the average of these ratios of an officer) of ``bad guys" as a potential indicator for weakening the influence of ``bad apples".
 
 
 
