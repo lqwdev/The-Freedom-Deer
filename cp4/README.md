@@ -28,22 +28,22 @@ The following lists the prerequistites required to run our code using Python. No
 
 ## Description of Files and How to Run
 
-Most of our checkpoint 4 code is in a Jupyter notebook. See instructions below on how to run the notebook.
+Most of our checkpoint 4 code is in the `submission.ipynb` Jupyter notebook. See instructions below on how to run the notebook.
 
 
-**Jupyter Notebooks**
+### Jupyter Notebooks
 
 All Jupyter notebooks can be run using the following command
 
 ```jupyter notebook [filename].ipynb```
 
 
-**`db.py` Utility File**
+### `db.py` Utility File
 
 Utilities for accessing and retreving data from the Postgres database server. This file is not run manually but needs to be included in Jupyter Notebook files.
 
 
-**SQL Files**
+### SQL Files
 
 Note that most SQL files won't be run directly. Instead, they will be queried through our Python wrapper in our Jupyter notebooks.
 
@@ -66,4 +66,9 @@ SQL query for retrieving the nodes for our graph analytics.
 `analysis2.sql`
 
 SQL code for running off shift analysis.
+
+
+### CSV Files
+
+These data files serve as support for our data analysis. There is no need to run them but we include them in the submission for completeness.
 
