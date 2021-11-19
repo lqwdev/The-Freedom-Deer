@@ -28,9 +28,7 @@ The following lists the prerequistites required to run our code using Python. No
 
 ## Description of Files and How to Run
 
-**`db.py` Utility File**
-
-Utilities for accessing and retreving data from the Postgres database server. This file is not run manually but needs to be included in Jupyter Notebook files.
+Most of our checkpoint 4 code is in a Jupyter notebook. See instructions below on how to run the notebook.
 
 
 **Jupyter Notebooks**
@@ -38,6 +36,11 @@ Utilities for accessing and retreving data from the Postgres database server. Th
 All Jupyter notebooks can be run using the following command
 
 ```jupyter notebook [filename].ipynb```
+
+
+**`db.py` Utility File**
+
+Utilities for accessing and retreving data from the Postgres database server. This file is not run manually but needs to be included in Jupyter Notebook files.
 
 
 **SQL Files**
