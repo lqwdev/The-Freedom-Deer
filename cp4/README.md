@@ -1,18 +1,66 @@
-# Checkpoint 3: Interactive Visualization
+# Checkpoint 4: Graph Analytics
 
-Our group produced an interactive bubble chart, Bar chart, and Sequence Sunburst visualization.
-Here and in the `findings` report, we link to the D3 Visualization notebook, where you can see the visualization and the code. We also identify the sql file containing the SQL queries used to get the data and the csv file containing the data.  
+We implemented our graph analytics modeling questions using GraphFrames and Apache Spark. We pulled our data from the CPDB Postgres server and performed post-processing using Python in a Jupyter Notebook environment.
 
-`src` contains the SQL scripts to obtain the csv data for each question.
 
-**1. Bubble chart view of cross race situation in period of 2004-2006, 2007-2009, 2010-2012, 2013-2016.**
-- **Visualization:**  https://observablehq.com/@c69ef2da2b4d284b/bubble-plot-of-cross-race
-- **Script:** `bubble_chart.sql`
+## Prerequisites
 
-**2. Bar chart view of the use of force cases under four environmental factor (Lighting condition, Indoor/Outdoor, Weather, Location).**
-- **Visualization:**  https://observablehq.com/@c69ef2da2b4d284b/bar-chart-horizontal-environmental-factor-on-use-of-force
-- **Script:** `environmental_bar_chart.sql`
+The following lists the prerequistites required to run our code using Python. Note that all the requirements under **Python Modules** can be installed using `pip`.
 
-**3. Sequence Sunburst Portraiting the Demographics of the Parties Involved in Use of Force.**
-- **Visualization:**  https://observablehq.com/@ltcrazy/sequence-sunburst-portraiting-the-demographics-of-the-2-pa
-- **Script:** `Sunburst_subject.sql` `Sunburst_officer.sql` `officer.ipynb`
+* Jupyter Notebook
+  * `pip install jupyter`
+* Java 11 (JDK)
+  * `brew install openjdk@11`
+  * Need to keep track of path to JDK
+* Apache Spark
+  * Need to keep track of path to Spark
+* Python3 > 3.8
+* Python Modules
+  * `pandas`
+  * `psycopg2`
+  * `networkx`
+  * `matplotlib`
+  * `pyspark`
+  * `findspark`
+  * `graphframes`
+
+
+
+## Description of Files and How to Run
+
+**`db.py` Utility File**
+
+Utilities for accessing and retreving data from the Postgres database server. This file is not run manually but needs to be included in Jupyter Notebook files.
+
+
+**Jupyter Notebooks**
+
+All Jupyter notebooks can be run using the following command
+
+```jupyter notebook [filename].ipynb```
+
+
+**SQL Files**
+
+Note that most SQL files won't be run directly. Instead, they will be queried through our Python wrapper in our Jupyter notebooks.
+
+However, all SQL files can be run using
+
+```psql -U cpdb cpdb < [filename].sql```
+
+`edges.sql`
+
+SQL query for retrieving the TRR edges for our graph analytics.
+
+`timestamp_edges.sql`
+
+SQL query for retrieving the baseline edges for our graph analytics.
+
+`nodes.sql`
+
+SQL query for retrieving the nodes for our graph analytics.
+
+`analysis2.sql`
+
+SQL code for running off shift analysis.
+
