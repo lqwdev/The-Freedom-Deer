@@ -1,5 +1,7 @@
 # Checkpoint 3: Interactive Visualization
 
+**Full Visualization + Analysis: https://observablehq.com/@c69ef2da2b4d284b/checkpoint-3-interactive-visualization**
+
 Our group produced an interactive bubble chart, Bar chart, and Sequence Sunburst visualization.
 Here and in the `findings` report, we link to the D3 Visualization notebook, where you can see the visualization and the code. We also identify the sql file containing the SQL queries used to get the data and the csv file containing the data.  
 
