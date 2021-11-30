@@ -1,5 +1,3 @@
--- Analysis of off-shift TRR -------
-
 -- DROP TABLE top_tri;
 CREATE TABLE top_tri (
   count NUMERIC,
@@ -15,6 +13,9 @@ FROM '/Users/TianchangLi/Fall 2021/DS Seminar/Project/The-Freedom-Deer/cp4/src/t
 DELIMITER ','
 CSV HEADER;
 
+
+-- Analysis of off-shift TRR ------------
+
 SELECT officer_id, on_shift_trr, trr_count total_trr, diff tri_count_diff, ROUND(CAST(on_shift_trr AS DECIMAL(10,5))
                  /
              CAST(trr_count AS DECIMAL(10,5)), 2) ratio FROM
@@ -27,7 +28,7 @@ ORDER BY diff DESC) AS temp1
 ORDER BY ratio;
 
 
--- Analysis of the influence of high-triangle-count officers -------
+-- Analysis of the influence of high-triangle-count officers ----------
 
 
 SELECT foo.src, foo.dst, foo.trr_count, bar.shifts_worked, baz.id officer_id
