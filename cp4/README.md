@@ -14,7 +14,7 @@ Since this include many prerequisites, we put everything inside a Google colab n
 
 # Steps to Run Downstream Analysis with SQL
 
-1. Download the table `triangles.csv` saved in Colab from above
+1. Download the table `triangles.csv` saved in Colab from above (or download from `src` folder)
 
 2. Change the file path (in the COPY block) in `analysis2.sql` into your local path where the table is downloaded
 
