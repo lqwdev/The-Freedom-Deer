@@ -1,4 +1,4 @@
--- Analysis of on-shift and off-shift TRR -------
+-- Analysis of off-shift TRR -------
 
 -- DROP TABLE top_tri;
 CREATE TABLE top_tri (
@@ -26,7 +26,7 @@ ORDER BY diff DESC) AS temp1
 ORDER BY ratio;
 
 
--- Analysis of on-shift and off-shift TRR -------
+-- Analysis of the influence of high-triangle-count officers -------
 
 
 SELECT foo.src, foo.dst, foo.trr_count, bar.shifts_worked, baz.id officer_id
