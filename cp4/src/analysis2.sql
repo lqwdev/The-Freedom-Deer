@@ -9,6 +9,7 @@ CREATE TABLE top_tri (
   diff NUMERIC
 );
 
+-- ~~~~~~ !Change to local file path! ~~~~~~~~~~
 COPY top_tri(count, id, name, trr_count, diff)
 FROM '/Users/TianchangLi/Fall 2021/DS Seminar/Project/The-Freedom-Deer/cp4/src/triangles.csv'
 DELIMITER ','
