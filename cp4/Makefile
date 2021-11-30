@@ -1,4 +1,6 @@
 FILES = \
+	src/triangles.csv \
+	src/analysis2.sql \
 	README.md \
 	findings.pdf
 
