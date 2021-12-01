@@ -5,7 +5,18 @@
 
 # Steps to Run Analysis
 
-Our analysis is split into two parts, sentiment analysis and regression analysis. Instructions to run each step is listed below.
+Our analysis is split into three parts, data joining, sentiment analysis, and regression analysis. Instructions to run each step is listed below.
+
+
+## Data Joining
+
+We would like to first join and filter the data using SQL. The script we use is `cp5_select_regression_table.sql`. To run
+
+```
+psql -U cpdb cpdb < cp5_select_regression_table.sql
+```
+
+We then output the joined data into a csv file `cp5_regress_table.csv`.
 
 
 ## Sentiment Analysis
