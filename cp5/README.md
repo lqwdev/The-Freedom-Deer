@@ -1,6 +1,6 @@
 # Introduction
 
-
+In this checkpoint, we extended one of our previous exploratory findings which showed considerably more cross-race cases in use of force, meaning that the police officer and subject involved are from different race groups, than same-race cases. Here, we are interested in investigating the role race plays in police misconduct.
 
 
 # Steps to Run Analysis
